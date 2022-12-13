@@ -1,0 +1,8 @@
+game by peb:
+https://pebonius.itch.io/
+
+player character sprites and portrait (title screen) by ansimuz, taken from:
+https://opengameart.org/content/legend-of-faune
+
+town tileset by Beast taken from:
+https://opengameart.org/content/overworld-grass-biome
