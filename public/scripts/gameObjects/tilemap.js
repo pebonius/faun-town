@@ -1,5 +1,4 @@
 import Debug from "../utilities/debug.js";
-import Tile from "./tile.js";
 
 export default class Tilemap {
   constructor(asset) {
@@ -13,7 +12,7 @@ export default class Tilemap {
       const row = this.tiles[y];
       for (var x = 0; x < asset.tiles[y].length; x++) {
         const tileId = asset.tiles[y][x];
-        row[x] = new Tile(tileId);
+        row[x] = tileId;
       }
     }
 
