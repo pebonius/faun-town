@@ -1,3 +1,4 @@
+import Tilemap from "../gameObjects/tilemap.js";
 import GameState from "./gameState.js";
 
 export default class GameScreen extends GameState {
@@ -7,6 +8,7 @@ export default class GameScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
+    this.map = new Tilemap(this.content.map);
   }
   update(input) {}
   draw(context, canvas) {}

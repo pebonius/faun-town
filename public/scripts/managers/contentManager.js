@@ -55,9 +55,9 @@ export default class ContentManager {
     this.loadingAllTriggered = true;
   }
   loadData() {
-    // this.loadJsonObject((json) => {
-    //   this.data = json;
-    // }, "./assets/data/data.json");
+    this.loadJsonObject((json) => {
+      this.map = json;
+    }, "./assets/data/map.json");
   }
   loadSounds() {
     // this.loadAudio((audio) => {
