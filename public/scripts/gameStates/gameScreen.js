@@ -8,8 +8,10 @@ export default class GameScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
-    this.map = new Tilemap(this.content.map);
+    this.map = new Tilemap(this, this.content.map);
   }
   update(input) {}
-  draw(context, canvas) {}
+  draw(context, canvas) {
+    this.map.draw(context);
+  }
 }
