@@ -1,9 +1,9 @@
 import GameState from "./gameState.js";
 import Point from "../geometry/point.js";
-import Sprite from "../drawableComponents/sprite.js";
 import Label from "../ui/label.js";
 import GameScreen from "./gameScreen.js";
 import AboutScreen from "./aboutScreen.js";
+import { drawImage } from "../utilities/graphics.js";
 
 export default class WelcomeScreen extends GameState {
   constructor(gameStates, canvas, input, content, sound) {
@@ -23,11 +23,9 @@ export default class WelcomeScreen extends GameState {
     this.addControlLabel("a", "about");
   }
   addBackgroundImage() {
-    this.bgImage = new Sprite(
-      this.content.pcPortrait,
-      new Point(0, 0),
-      new Point(640, 480)
-    );
+    this.bgImage = this.content.pcPortrait;
+    this.bgPos = new Point(0, 0);
+    this.bgSize = new Point(640, 480);
   }
   addTitle() {
     this.titleLabel = new Label(
@@ -85,7 +83,7 @@ export default class WelcomeScreen extends GameState {
   }
   draw(context, canvas) {
     super.draw(context, canvas);
-    this.bgImage.draw(context);
+    drawImage(context, this.bgImage, this.bgPos, this.bgSize);
     this.titleLabel.draw(context);
     this.drawControlLabels(context);
   }

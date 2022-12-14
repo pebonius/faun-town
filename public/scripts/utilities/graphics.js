@@ -26,3 +26,7 @@ export const clearContext = (context, canvas) => {
   context.fillStyle = "#000";
   context.fill();
 };
+
+export const drawImage = (context, image, position, size) => {
+  context.drawImage(image, position.x, position.y, size.x, size.y);
+};
