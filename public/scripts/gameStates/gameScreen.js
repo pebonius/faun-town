@@ -13,8 +13,10 @@ export default class GameScreen extends GameState {
     this.map = new Tilemap(this, this.content.map);
     this.player = new Player(this, this.map, new Point(2, 2));
   }
-  update(input) {}
+  update(input) {
+    this.player.update(input);
+  }
   draw(context, canvas) {
-    this.map.draw(context);
+    this.player.map.draw(context);
   }
 }
