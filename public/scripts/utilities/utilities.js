@@ -89,7 +89,7 @@ export const removeFromArray = (array, element) => {
   checkForArray(array, "array");
 
   if (!arrayContains(array, element)) {
-    throw new Error("array does not include this element");
+    throw new Error(`array does not include ${element}`);
   }
 
   const i = array.indexOf(element);
@@ -116,7 +116,7 @@ export const checkForTypeErrorNum = (value, valueName) => {
 
 export const isDefined = (value) => {
   return value !== null && value !== undefined;
-}
+};
 
 export const clamp = (number, min, max) => {
   if (!isNumber(number) || !isNumber(min) || !isNumber(max)) {
@@ -155,6 +155,14 @@ export const isBool = (value) => {
 export const hasProperty = (object, checkedProperty) => {
   return Object.keys(object).some((key) => {
     return key == checkedProperty;
+  });
+};
+
+export const checkForProps = (object, props) => {
+  props.forEach((element) => {
+    if (!hasProperty(object, element)) {
+      throw new Error(`${object} does not have property ${element}`);
+    }
   });
 };
 
