@@ -2,6 +2,7 @@ import Debug from "../utilities/debug.js";
 import Point from "../geometry/point.js";
 import { drawImage } from "../utilities/graphics.js";
 import {
+  arrayContains,
   checkForProps,
   cloneArray,
   isDefined,
@@ -25,8 +26,26 @@ export default class Tilemap {
   get height() {
     return this.tiles[0].length;
   }
+  containsPosition(pos) {
+    return (
+      pos.x >= 0 && pos.x < this.width && pos.y >= 0 && pos.y < this.height
+    );
+  }
+  getTile(pos) {
+    if (this.containsPosition(pos)) {
+      return this.tiles[pos.y][pos.x];
+    }
+    return null;
+  }
   getTileImage(tileId) {
     return this.gameScreen.content.tiles[tileId];
+  }
+  getTileWalkable(tileId) {
+    return arrayContains(this.walkableTiles, tileId);
+  }
+  isWalkable(pos) {
+    console.log(this.getTile(pos));
+    return this.getTileWalkable(this.getTile(pos));
   }
   drawTile(pos, context) {
     const tileId = this.tiles[pos.y][pos.x];
@@ -90,6 +109,7 @@ export default class Tilemap {
   //     }
   // }
   load(asset) {
+    this.walkableTiles = cloneArray(asset.walkableTiles);
     this.tiles = cloneArray(asset.tiles);
   }
 }

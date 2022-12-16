@@ -75,9 +75,12 @@ export default class Player {
     Debug.log("grounding");
   }
   move(position, map) {
-    this.position = position;
-    this.map = map;
-    return true;
+    if (map.isWalkable(position)) {
+      this.position = position;
+      this.map = map;
+      return true;
+    }
+    return false;
   }
   handleKeyInput(input) {
     if (input.isKeyDown(input.keys.NUM5) || input.isKeyDown(input.keys.SHIFT)) {
