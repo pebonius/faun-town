@@ -1,18 +1,15 @@
 import Debug from "../utilities/debug.js";
 import Point from "../geometry/point.js";
+import Entity from "./entity.js";
 
-export default class Player {
+export default class Player extends Entity {
   constructor(gameScreen, startingMap, startingPosition) {
-    this.gameScreen = gameScreen;
-    this.position = startingPosition;
+    super(gameScreen);
     this.sprite = this.gameScreen.content.pc;
-    this.map = startingMap;
-    this.map.addEntity(this);
+    this.name = "player";
     this.inputDelay = 10;
     this.inputCooldown = 0;
-  }
-  toString() {
-    return "player";
+    this.placeOnMap(startingPosition, startingMap);
   }
   update(input) {
     this.updateInputCooldown();
@@ -73,14 +70,6 @@ export default class Player {
   }
   ground() {
     Debug.log("grounding");
-  }
-  move(position, map) {
-    if (map.isWalkable(position)) {
-      this.position = position;
-      this.map = map;
-      return true;
-    }
-    return false;
   }
   handleKeyInput(input) {
     if (input.isKeyDown(input.keys.NUM5) || input.isKeyDown(input.keys.SHIFT)) {

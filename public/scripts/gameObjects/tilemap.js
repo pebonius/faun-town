@@ -15,7 +15,7 @@ export default class Tilemap {
     this.gameScreen = gameScreen;
     this.load(asset);
     this.tileSize = new Point(64, 48);
-    this.entities = [];
+    this.addEntitiesLayer();
   }
   toString() {
     return "tilemap";
@@ -25,6 +25,13 @@ export default class Tilemap {
   }
   get height() {
     return this.tiles[0].length;
+  }
+  addEntitiesLayer() {
+    this.entities = new Array(this.height);
+
+    for (var i = 0; i < this.entities.length; i++) {
+      this.entities[i] = new Array(this.width);
+    }
   }
   containsPosition(pos) {
     return (
@@ -44,7 +51,6 @@ export default class Tilemap {
     return arrayContains(this.walkableTiles, tileId);
   }
   isWalkable(pos) {
-    console.log(this.getTile(pos));
     return this.getTileWalkable(this.getTile(pos));
   }
   drawTile(pos, context) {
@@ -61,43 +67,41 @@ export default class Tilemap {
 
     drawImage(context, this.getTileImage(tileId), tilePos, this.tileSize);
   }
-  addEntity(entity) {
-    const maxEntities = 10000;
-    if (this.entities.length > maxEntities) {
-      throw new Error(
-        `there is a truckton of entities (${this.entities.length}), what?`
-      );
+  getEntity(pos) {
+    if (this.containsPosition(pos)) {
+      return this.entities[pos.y][pos.x];
+    }
+    return null;
+  }
+  setEntity(pos, value) {
+    if (this.containsPosition(pos)) {
+      this.entities[pos.y][pos.x] = value;
+    }
+  }
+  removeEntity(value) {
+    this.setEntity(value.position, null);
+  }
+  drawEntity(pos, context) {
+    const entity = this.getEntity(pos);
+
+    if (!isDefined(entity) || !isDefined(entity.sprite)) {
+      return;
     }
 
-    this.entities.push(entity);
-  }
-  removeEntity(entity) {
-    removeFromArray(this.entities, entity);
-  }
-  drawEntity(entity, context) {
-    if (!isDefined(entity)) {
-      throw new Error("entity is not defined, what are you tryne draw.");
-    }
-
-    checkForProps(entity, ["position", "sprite"]);
-
-    const position = new Point(
-      entity.position.x * this.tileSize.x,
-      entity.position.y * this.tileSize.y
+    const transformedPos = new Point(
+      pos.x * this.tileSize.x,
+      pos.y * this.tileSize.y
     );
 
-    drawImage(context, entity.sprite, position, this.tileSize);
+    drawImage(context, entity.sprite, transformedPos, this.tileSize);
   }
   draw(context) {
     for (let y = 0; y < this.height; y++)
       for (let x = 0; x < this.width; x++) {
         var pos = new Point(x, y);
         this.drawTile(pos, context);
+        this.drawEntity(pos, context);
       }
-
-    this.entities.forEach((entity) => {
-      this.drawEntity(entity, context);
-    });
   }
   // drawFromCamera(context, camera) {
   //   const cameraPos = camera.position;
