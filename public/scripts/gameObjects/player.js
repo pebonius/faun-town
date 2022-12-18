@@ -3,12 +3,17 @@ import Point from "../geometry/point.js";
 import Entity from "./entity.js";
 
 export default class Player extends Entity {
-  constructor(gameScreen, startingMap, startingPosition) {
+  constructor(gameScreen, playerData) {
     super(gameScreen);
     this.sprite = this.gameScreen.content.pc;
-    this.name = "player";
     this.inputDelay = 10;
     this.inputCooldown = 0;
+    this.load(playerData);
+  }
+  load(playerData) {
+    this.name = playerData.name;
+    const startingMap = this.gameScreen.getMapById(playerData.map);
+    const startingPosition = new Point(playerData.posX, playerData.posY);
     this.placeOnMap(startingPosition, startingMap);
   }
   update(input) {

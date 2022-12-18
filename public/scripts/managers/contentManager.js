@@ -56,8 +56,8 @@ export default class ContentManager {
   }
   loadData() {
     this.loadJsonObject((json) => {
-      this.map = json;
-    }, "./assets/data/map.json");
+      this.data = json;
+    }, "./assets/data/data.json");
   }
   loadSounds() {
     // this.loadAudio((audio) => {

@@ -10,13 +10,28 @@ export default class GameScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
-    this.map = new Tilemap(this, this.content.map);
-    this.player = new Player(this, this.map, new Point(2, 5));
+    this.load();
   }
   update(input) {
     this.player.update(input);
   }
   draw(context, canvas) {
     this.player.map.draw(context);
+  }
+  getMapById(mapId) {
+    return this.maps[mapId];
+  }
+  load() {
+    this.loadMaps();
+    this.loadPlayer();
+  }
+  loadPlayer() {
+    this.player = new Player(this, this.content.data.playerData);
+  }
+  loadMaps() {
+    this.maps = [];
+    this.content.data.maps.forEach((element) => {
+      this.maps.push(new Tilemap(this, element));
+    });
   }
 }
