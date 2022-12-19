@@ -1,6 +1,5 @@
 import Player from "../gameObjects/player.js";
 import Tilemap from "../gameObjects/tilemap.js";
-import Point from "../geometry/point.js";
 import GameState from "./gameState.js";
 
 export default class GameScreen extends GameState {
