@@ -3,17 +3,17 @@ import Point from "../geometry/point.js";
 import Entity from "./entity.js";
 
 export default class Player extends Entity {
-  constructor(gameScreen, playerData) {
+  constructor(gameScreen, data) {
     super(gameScreen);
     this.sprite = this.gameScreen.content.pc;
     this.inputDelay = 10;
     this.inputCooldown = 0;
-    this.load(playerData);
+    this.load(data);
   }
-  load(playerData) {
-    this.name = playerData.name;
-    const startingMap = this.gameScreen.getMapById(playerData.map);
-    const startingPosition = new Point(playerData.posX, playerData.posY);
+  load(data) {
+    this.name = data.name;
+    const startingMap = this.gameScreen.getMapById(data.map);
+    const startingPosition = new Point(data.posX, data.posY);
     this.placeOnMap(startingPosition, startingMap);
   }
   update(input) {
@@ -75,6 +75,9 @@ export default class Player extends Entity {
   }
   ground() {
     Debug.log("grounding");
+  }
+  onMoved() {
+    Debug.log(`player pos: [${this.position.x}, ${this.position.y}]`);
   }
   handleKeyInput(input) {
     if (input.isKeyDown(input.keys.NUM5) || input.isKeyDown(input.keys.SHIFT)) {

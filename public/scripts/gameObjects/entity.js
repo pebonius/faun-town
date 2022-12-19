@@ -1,4 +1,5 @@
 import Point from "../geometry/point.js";
+import { isDefined } from "../utilities/utilities.js";
 
 export default class Entity {
   constructor(gameScreen) {
@@ -9,10 +10,9 @@ export default class Entity {
     return this.name;
   }
   placeOnMap(targetPosition, targetMap) {
+    const cachedPosition = this.position;
     const isEnteringNewMap = this.isEnteringNewMap(this.map, targetMap);
-    if (this.position != undefined) {
-      this.map.removeEntity(this);
-    }
+    this.removeFromMap();
     targetMap.setEntity(targetPosition, this);
     this.position = new Point(targetPosition.x, targetPosition.y);
     this.map = targetMap;
@@ -21,14 +21,14 @@ export default class Entity {
       this.onEnterMap(targetMap);
       return false;
     }
+    this.onMoved(cachedPosition);
     return true;
   }
-  onEnterMap(map) {}
   isEnteringNewMap(currentMap, targetMap) {
     return currentMap != targetMap;
   }
   removeFromMap() {
-    if (this.map != null) {
+    if (isDefined(this.map) && isDefined(this.position)) {
       this.map.removeEntity(this);
     }
   }
@@ -44,12 +44,10 @@ export default class Entity {
       return true;
     }
 
-    const cachedPosition = this.position;
-    this.removeFromMap();
-    this.onMoved(cachedPosition);
     return this.placeOnMap(targetPosition, targetMap);
   }
   onMoved(previousPosition) {}
+  onEnterMap(map) {}
   moveAtRandom() {
     if (this.getPosition() instanceof Point) {
       const pos = this.getPosition();

@@ -9,13 +9,13 @@ import {
   isNumber,
   removeFromArray,
 } from "../utilities/utilities.js";
+import MapEvent from "./mapEvent.js";
 
 export default class Tilemap {
-  constructor(gameScreen, asset) {
+  constructor(gameScreen, data) {
     this.gameScreen = gameScreen;
-    this.load(asset);
     this.tileSize = new Point(64, 48);
-    this.addEntitiesLayer();
+    this.load(data);
   }
   toString() {
     return "tilemap";
@@ -112,8 +112,12 @@ export default class Tilemap {
   //       this.drawTile(pos, context);
   //     }
   // }
-  load(asset) {
-    this.walkableTiles = cloneArray(asset.walkableTiles);
-    this.tiles = cloneArray(asset.tiles);
+  load(data) {
+    this.walkableTiles = cloneArray(data.walkableTiles);
+    this.tiles = cloneArray(data.tiles);
+    this.addEntitiesLayer();
+    data.events.forEach((element) => {
+      const newEvent = new MapEvent(this.gameScreen, this, element);
+    });
   }
 }
