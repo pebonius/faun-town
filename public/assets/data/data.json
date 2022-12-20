@@ -23,6 +23,7 @@
       ],
       "events": [
         {
+          "name": "event",
           "posX": 6,
           "posY": 2,
           "sprite": ""

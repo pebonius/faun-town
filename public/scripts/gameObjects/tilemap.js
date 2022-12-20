@@ -103,15 +103,17 @@ export default class Tilemap {
         this.drawEntity(pos, context);
       }
   }
-  // drawFromCamera(context, camera) {
+  // TODO: drawFromCamera(context, camera) {
   //   const cameraPos = camera.position;
-
   //   for (let y = cameraPos.y; y < cameraPos.y + camera.viewportSize.y; y++)
   //     for (let x = cameraPos.x; x < cameraPos.x + camera.viewportSize.x; x++) {
   //       var pos = new Point(x, y);
   //       this.drawTile(pos, context);
   //     }
   // }
+  onTurn(player) {
+    // TODO: turn entities on the map
+  }
   load(data) {
     this.name = data.name;
     this.walkableTiles = cloneArray(data.walkableTiles);

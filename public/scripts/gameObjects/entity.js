@@ -1,5 +1,6 @@
 import Point from "../geometry/point.js";
 import { isDefined } from "../utilities/utilities.js";
+import Debug from "../utilities/debug.js";
 
 export default class Entity {
   constructor(gameScreen) {
@@ -46,7 +47,11 @@ export default class Entity {
 
     return this.placeOnMap(targetPosition, targetMap);
   }
-  onMoved(previousPosition) {}
+  onMoved(previousPosition) {
+    Debug.log(
+      `${this} moved from [${previousPosition.x}, ${previousPosition.y}] to [${this.position.x}, ${this.position.y}], map ${this.map}`
+    );
+  }
   onEnterMap(map) {}
   moveAtRandom() {
     if (this.getPosition() instanceof Point) {
@@ -62,7 +67,9 @@ export default class Entity {
     return collider != null && typeof collider.onCollision === "function";
   }
   resolveCollision(collider) {}
-  onCollision(collider) {}
+  onCollision(collider) {
+    Debug.log(`${collider} collided with ${this}.`);
+  }
   canMoveTo(targetPosition, targetMap) {
     return this.map.isWalkable(targetPosition);
   }

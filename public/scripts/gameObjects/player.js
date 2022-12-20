@@ -17,6 +17,8 @@ export default class Player extends Entity {
     this.placeOnMap(startingPosition, startingMap);
   }
   update(input) {
+    this.endTurn = false;
+
     this.updateInputCooldown();
 
     if (!this.takesInput()) {
@@ -26,6 +28,13 @@ export default class Player extends Entity {
     this.handleKeyInput(input);
 
     this.checkIfResetInputCooldown(input);
+
+    this.checkTurnUpdate();
+  }
+  checkTurnUpdate() {
+    if (this.endTurn) {
+      this.map.onTurn(this);
+    }
   }
   checkIfResetInputCooldown(input) {
     if (this.isInputCooldownReset(input)) {
@@ -71,12 +80,8 @@ export default class Player extends Entity {
     }
   }
   wait() {
-    Debug.log(`${this} waiting`);
-  }
-  onMoved() {
-    Debug.log(
-      `${this} pos: [${this.position.x}, ${this.position.y}], map ${this.map}`
-    );
+    Debug.log(`${this} is waiting`);
+    return true;
   }
   handleKeyInput(input) {
     if (input.isKeyDown(input.keys.NUM8) || input.isKeyDown(input.keys.UP)) {
@@ -134,5 +139,8 @@ export default class Player extends Entity {
     ) {
       this.endTurn = this.wait();
     }
+  }
+  resolveCollision(collider) {
+    collider.onCollision(this);
   }
 }
