@@ -71,26 +71,15 @@ export default class Player extends Entity {
     }
   }
   wait() {
-    Debug.log("waiting");
-  }
-  ground() {
-    Debug.log("grounding");
+    Debug.log(`${this} waiting`);
   }
   onMoved() {
-    Debug.log(`player pos: [${this.position.x}, ${this.position.y}]`);
+    Debug.log(
+      `${this} pos: [${this.position.x}, ${this.position.y}], map ${this.map}`
+    );
   }
   handleKeyInput(input) {
-    if (input.isKeyDown(input.keys.NUM5) || input.isKeyDown(input.keys.SHIFT)) {
-      this.endTurn = this.wait();
-    } else if (
-      input.isKeyDown(input.keys.NUM0) ||
-      input.isKeyDown(input.keys.CTRL)
-    ) {
-      this.endTurn = this.ground();
-    } else if (
-      input.isKeyDown(input.keys.NUM8) ||
-      input.isKeyDown(input.keys.UP)
-    ) {
+    if (input.isKeyDown(input.keys.NUM8) || input.isKeyDown(input.keys.UP)) {
       this.endTurn = this.move(
         new Point(this.position.x, this.position.y - 1),
         this.map
@@ -139,6 +128,11 @@ export default class Player extends Entity {
         new Point(this.position.x + 1, this.position.y + 1),
         this.map
       );
+    } else if (
+      input.isKeyDown(input.keys.NUM5) ||
+      input.isKeyDown(input.keys.SHIFT)
+    ) {
+      this.endTurn = this.wait();
     }
   }
 }

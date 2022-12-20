@@ -18,7 +18,7 @@ export default class Tilemap {
     this.load(data);
   }
   toString() {
-    return "tilemap";
+    return this.name;
   }
   get width() {
     return this.tiles.length;
@@ -113,6 +113,7 @@ export default class Tilemap {
   //     }
   // }
   load(data) {
+    this.name = data.name;
     this.walkableTiles = cloneArray(data.walkableTiles);
     this.tiles = cloneArray(data.tiles);
     this.addEntitiesLayer();
