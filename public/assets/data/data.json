@@ -26,7 +26,29 @@
           "name": "event",
           "posX": 6,
           "posY": 2,
-          "sprite": ""
+          "sprite": "",
+          "sequences": [
+            {
+              "condition": "variableValueIsAtLeast",
+              "conditionArgs": ["someVariable", 1],
+              "actions": [
+                {
+                  "name": "log",
+                  "arguments": ["someVariable is 1"]
+                }
+              ]
+            },
+            {
+              "condition": "unsupportedAction, lol",
+              "conditionArgs": ["someVariable", 1],
+              "actions": [
+                {
+                  "name": "log",
+                  "arguments": ["someVariable is 1"]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
