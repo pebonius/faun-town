@@ -43,6 +43,10 @@
             {
               "name": "setVariableValue",
               "arguments": ["someVariable", 2]
+            },
+            {
+              "name": "movePlayer",
+              "arguments": [1, 1, 0]
             }
           ]
         }
