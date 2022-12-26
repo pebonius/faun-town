@@ -23,30 +23,16 @@
       ],
       "events": [
         {
-          "name": "event",
+          "name": "town entrance",
           "posX": 6,
           "posY": 2,
           "sprite": "",
-          "sequences": [
+          "condition": "variableValueIsAtLeast",
+          "conditionArgs": ["someVariable", 1],
+          "actions": [
             {
-              "condition": "variableValueIsAtLeast",
-              "conditionArgs": ["someVariable", 1],
-              "actions": [
-                {
-                  "name": "log",
-                  "arguments": ["someVariable is 1"]
-                }
-              ]
-            },
-            {
-              "condition": "unsupportedAction, lol",
-              "conditionArgs": ["someVariable", 1],
-              "actions": [
-                {
-                  "name": "log",
-                  "arguments": ["someVariable is 1"]
-                }
-              ]
+              "name": "log",
+              "arguments": ["someVariable is 1"]
             }
           ]
         }

@@ -10,29 +10,28 @@ export default class MapEvent extends Entity {
   }
   onCollision(collider) {
     super.onCollision(collider);
-    this.playActions();
+
+    if (this.conditionFulfilled()) {
+      this.playActions();
+    }
   }
   playActions() {
-    if (Array.isArray(this.sequences) && this.sequences.length > 0) {
-      this.sequences.forEach((sequence) => {
-        const condition = this.getSupportedCondition(sequence.condition);
-        const conditionArgs = sequence.conditionArgs;
-
-        if (this.conditionFulfilled(condition, conditionArgs)) {
-          sequence.actions.forEach((action) => {
-            const supportedAction =
-              this.game.supportedActions.getSupportedAction(action.name);
-            supportedAction(...action.arguments);
-          });
-        }
+    if (Array.isArray(this.actions) && this.actions.length > 0) {
+      this.actions.forEach((action) => {
+        const supportedAction = this.game.supportedActions.getSupportedAction(
+          action.name
+        );
+        supportedAction(...action.arguments);
       });
     }
   }
-  conditionFulfilled(condition, conditionArgs) {
+  conditionFulfilled() {
+    const supportedCondition = this.getSupportedCondition(this.condition);
+
     return (
-      condition != undefined &&
-      conditionArgs != undefined &&
-      condition(...conditionArgs)
+      supportedCondition != undefined &&
+      this.conditionArgs != undefined &&
+      supportedCondition(...this.conditionArgs)
     );
   }
   getSupportedAction(action) {
@@ -65,7 +64,9 @@ export default class MapEvent extends Entity {
         return () => {};
       default:
         return () => {
-          Debug.log(`tried to call unsupported action <<${action}>>.`);
+          Debug.log(
+            `<<${this}>> tried to call unsupported action <<${action}>>.`
+          );
         };
     }
   }
@@ -96,7 +97,9 @@ export default class MapEvent extends Entity {
         };
       default:
         return () => {
-          Debug.log(`tried to call unsupported condition <<${condition}>>.`);
+          Debug.log(
+            `<<${this}>> tried to call unsupported condition <<${condition}>>.`
+          );
         };
     }
   }
@@ -110,7 +113,8 @@ export default class MapEvent extends Entity {
     } else {
       this.sprite = this.gameScreen.content.pc;
     }
-
-    this.sequences = data.sequences;
+    this.condition = data.condition;
+    this.conditionArgs = data.conditionArgs;
+    this.actions = data.actions;
   }
 }
