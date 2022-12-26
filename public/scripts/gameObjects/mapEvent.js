@@ -20,9 +20,7 @@ export default class MapEvent extends Entity {
   playActions(collider) {
     if (Array.isArray(this.actions) && this.actions.length > 0) {
       this.actions.forEach((action) => {
-        const supportedAction = this.game.supportedActions.getSupportedAction(
-          action.name
-        );
+        const supportedAction = this.getSupportedAction(action.name);
         supportedAction(...action.arguments);
       });
     }
@@ -41,30 +39,18 @@ export default class MapEvent extends Entity {
   }
   getSupportedAction(action) {
     switch (action) {
-      // case "restart":
-      //   return () => {
-      //     this.game.scenario.runScenario();
-      //   };
-      // case "nextScene":
-      //   return () => {
-      //     this.game.scenario.goToNextScene();
-      //   };
-      // case "goToScene":
-      //   return (id) => {
-      //     this.game.scenario.goToScene(id);
-      //   };
-      // case "addTopHud":
-      //   return (label, value) => {
-      //     this.game.scenario.addTopHudItem(label, value);
-      //   };
-      // case "setVariableValue":
-      //   return (name, value) => {
-      //     this.game.scenario.setVariableValue(name, value);
-      //   };
-      // case "changeVariableValue":
-      //   return (name, change) => {
-      //     this.game.scenario.changeVariableValue(name, change);
-      //   };
+      case "log":
+        return (string) => {
+          Debug.log(string);
+        };
+      case "setVariableValue":
+        return (name, value) => {
+          this.gameScreen.variables.setVariableValue(name, value);
+        };
+      case "changeVariableValue":
+        return (name, change) => {
+          this.gameScreen.variables.changeVariableValue(name, change);
+        };
       case "":
         return () => {};
       default:
@@ -77,25 +63,31 @@ export default class MapEvent extends Entity {
   }
   getSupportedCondition(condition) {
     switch (condition) {
-      // case "variableValueIs":
-      //   return (variableName, value) => {
-      //     return this.game.scenario.variableValueIs(variableName, value);
-      //   };
-      // case "variableValueIsNot":
-      //   return (variableName, value) => {
-      //     return this.game.scenario.variableValueIsNot(variableName, value);
-      //   };
-      // case "variableValueIsAtLeast":
-      //   return (variableName, value) => {
-      //     return this.game.scenario.variableValueIsAtLeast(variableName, value);
-      //   };
-      // case "variableValueIsNoMoreThan":
-      //   return (variableName, value) => {
-      //     return this.game.scenario.variableValueIsNoMoreThan(
-      //       variableName,
-      //       value
-      //     );
-      //   };
+      case "variableValueIs":
+        return (variableName, value) => {
+          return this.gameScreen.variables.variableValueIs(variableName, value);
+        };
+      case "variableValueIsNot":
+        return (variableName, value) => {
+          return this.gameScreen.variables.variableValueIsNot(
+            variableName,
+            value
+          );
+        };
+      case "variableValueIsAtLeast":
+        return (variableName, value) => {
+          return this.gameScreen.variables.variableValueIsAtLeast(
+            variableName,
+            value
+          );
+        };
+      case "variableValueIsNoMoreThan":
+        return (variableName, value) => {
+          return this.gameScreen.variables.variableValueIsNoMoreThan(
+            variableName,
+            value
+          );
+        };
       case "":
         return () => {
           return true;

@@ -1,5 +1,6 @@
 import Player from "../gameObjects/player.js";
 import Tilemap from "../gameObjects/tilemap.js";
+import Variables from "../gameObjects/variables.js";
 import GameState from "./gameState.js";
 
 export default class GameScreen extends GameState {
@@ -23,9 +24,13 @@ export default class GameScreen extends GameState {
   load() {
     this.loadMaps();
     this.loadPlayer();
+    this.loadVariables();
   }
   loadPlayer() {
     this.player = new Player(this, this.content.data.playerData);
+  }
+  loadVariables() {
+    this.variables = new Variables(this, this.content.data.variables);
   }
   loadMaps() {
     this.maps = [];
