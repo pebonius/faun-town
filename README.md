@@ -1,3 +1,3 @@
-# elf goes to town
+# new faun in town
 
 survival game about trying to rent a house.
