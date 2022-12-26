@@ -16,6 +16,19 @@ export default class Player extends Entity {
     const startingPosition = new Point(data.posX, data.posY);
     this.placeOnMap(startingPosition, startingMap);
   }
+  placeOnMap(targetPosition, targetMap) {
+    const cachedPosition = this.position;
+    const isEnteringNewMap = this.isEnteringNewMap(this.map, targetMap);
+    this.position = new Point(targetPosition.x, targetPosition.y);
+    this.map = targetMap;
+
+    if (isEnteringNewMap) {
+      this.onEnterMap(targetMap);
+      return false;
+    }
+    this.onMoved(cachedPosition);
+    return true;
+  }
   update(input) {
     this.endTurn = false;
 

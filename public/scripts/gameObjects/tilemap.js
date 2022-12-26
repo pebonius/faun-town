@@ -26,11 +26,11 @@ export default class Tilemap {
   get height() {
     return this.tiles[0].length;
   }
-  addEntitiesLayer() {
-    this.entities = new Array(this.height);
+  addEventsLayer() {
+    this.events = new Array(this.height);
 
-    for (var i = 0; i < this.entities.length; i++) {
-      this.entities[i] = new Array(this.width);
+    for (var i = 0; i < this.events.length; i++) {
+      this.events[i] = new Array(this.width);
     }
   }
   containsPosition(pos) {
@@ -69,19 +69,19 @@ export default class Tilemap {
   }
   getEntity(pos) {
     if (this.containsPosition(pos)) {
-      return this.entities[pos.y][pos.x];
+      return this.events[pos.y][pos.x];
     }
     return null;
   }
   setEntity(pos, value) {
     if (this.containsPosition(pos)) {
-      this.entities[pos.y][pos.x] = value;
+      this.events[pos.y][pos.x] = value;
     }
   }
   removeEntity(value) {
     this.setEntity(value.position, null);
   }
-  drawEntity(pos, context) {
+  drawEvent(pos, context) {
     const entity = this.getEntity(pos);
 
     if (!isDefined(entity) || !isDefined(entity.sprite)) {
@@ -95,13 +95,25 @@ export default class Tilemap {
 
     drawImage(context, entity.sprite, transformedPos, this.tileSize);
   }
+  drawPlayer(context) {
+    const player = this.gameScreen.player;
+    const pos = player.position;
+
+    const transformedPos = new Point(
+      pos.x * this.tileSize.x,
+      pos.y * this.tileSize.y
+    );
+
+    drawImage(context, player.sprite, transformedPos, this.tileSize);
+  }
   draw(context) {
     for (let y = 0; y < this.height; y++)
       for (let x = 0; x < this.width; x++) {
         var pos = new Point(x, y);
         this.drawTile(pos, context);
-        this.drawEntity(pos, context);
+        this.drawEvent(pos, context);
       }
+    this.drawPlayer(context);
   }
   // TODO: drawFromCamera(context, camera) {
   //   const cameraPos = camera.position;
@@ -118,7 +130,7 @@ export default class Tilemap {
     this.name = data.name;
     this.walkableTiles = cloneArray(data.walkableTiles);
     this.tiles = cloneArray(data.tiles);
-    this.addEntitiesLayer();
+    this.addEventsLayer();
     data.events.forEach((element) => {
       const newEvent = new MapEvent(this.gameScreen, this, element);
     });

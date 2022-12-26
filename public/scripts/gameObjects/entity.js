@@ -68,7 +68,7 @@ export default class Entity {
   }
   resolveCollision(collider) {}
   onCollision(collider) {
-    Debug.log(`${collider} collided with ${this}.`);
+    Debug.log(`<<${collider}>> collided with <<${this}>>.`);
   }
   canMoveTo(targetPosition, targetMap) {
     return this.map.isWalkable(targetPosition);

@@ -1,6 +1,6 @@
 import Point from "../geometry/point.js";
 import Debug from "../utilities/debug.js";
-import { isNonEmptyString } from "../utilities/utilities.js";
+import { isFunction, isNonEmptyString } from "../utilities/utilities.js";
 import Entity from "./entity.js";
 
 export default class MapEvent extends Entity {
@@ -12,10 +12,12 @@ export default class MapEvent extends Entity {
     super.onCollision(collider);
 
     if (this.conditionFulfilled()) {
-      this.playActions();
+      this.playActions(collider);
+    } else {
+      this.letThrough(collider);
     }
   }
-  playActions() {
+  playActions(collider) {
     if (Array.isArray(this.actions) && this.actions.length > 0) {
       this.actions.forEach((action) => {
         const supportedAction = this.game.supportedActions.getSupportedAction(
@@ -25,11 +27,14 @@ export default class MapEvent extends Entity {
       });
     }
   }
+  letThrough(collider) {
+    collider.placeOnMap(this.position, this.map);
+  }
   conditionFulfilled() {
     const supportedCondition = this.getSupportedCondition(this.condition);
 
     return (
-      supportedCondition != undefined &&
+      isFunction(supportedCondition) &&
       this.conditionArgs != undefined &&
       supportedCondition(...this.conditionArgs)
     );
