@@ -1,5 +1,5 @@
+import Maps from "../gameObjects/maps.js";
 import Player from "../gameObjects/player.js";
-import Tilemap from "../gameObjects/tilemap.js";
 import Variables from "../gameObjects/variables.js";
 import GameState from "./gameState.js";
 
@@ -18,9 +18,6 @@ export default class GameScreen extends GameState {
   draw(context, canvas) {
     this.player.map.draw(context);
   }
-  getMapById(mapId) {
-    return this.maps[mapId];
-  }
   load() {
     this.loadMaps();
     this.loadPlayer();
@@ -33,9 +30,6 @@ export default class GameScreen extends GameState {
     this.variables = new Variables(this, this.content.data.variables);
   }
   loadMaps() {
-    this.maps = [];
-    this.content.data.maps.forEach((element) => {
-      this.maps.push(new Tilemap(this, element));
-    });
+    this.maps = new Maps(this, this.content.data.maps);
   }
 }

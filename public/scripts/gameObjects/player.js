@@ -12,7 +12,7 @@ export default class Player extends Entity {
   }
   load(data) {
     this.name = data.name;
-    const startingMap = this.gameScreen.getMapById(data.map);
+    const startingMap = this.gameScreen.maps.getMapById(data.map);
     const startingPosition = new Point(data.posX, data.posY);
     this.placeOnMap(startingPosition, startingMap);
   }

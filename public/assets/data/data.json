@@ -46,7 +46,7 @@
             },
             {
               "name": "movePlayer",
-              "arguments": [1, 1, 0]
+              "arguments": [6, 4, 0]
             }
           ]
         }

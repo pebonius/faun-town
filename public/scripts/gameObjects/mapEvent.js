@@ -54,7 +54,7 @@ export default class MapEvent extends Entity {
       case "movePlayer":
         return (posX, posY, mapId) => {
           const pos = new Point(posX, posY);
-          const map = this.gameScreen.getMapById(mapId);
+          const map = this.gameScreen.maps.getMapById(mapId);
           this.gameScreen.player.placeOnMap(pos, map);
         };
       case "":
