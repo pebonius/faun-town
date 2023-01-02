@@ -30,19 +30,7 @@ export default class Player extends Entity {
     return true;
   }
   update(input) {
-    this.endTurn = false;
-
-    this.updateInputCooldown();
-
-    if (!this.takesInput()) {
-      return;
-    }
-
     this.handleKeyInput(input);
-
-    this.checkIfResetInputCooldown(input);
-
-    this.checkTurnUpdate();
   }
   checkTurnUpdate() {
     if (this.endTurn) {
@@ -97,6 +85,14 @@ export default class Player extends Entity {
     return true;
   }
   handleKeyInput(input) {
+    this.endTurn = false;
+
+    this.updateInputCooldown();
+
+    if (!this.takesInput()) {
+      return;
+    }
+
     if (input.isKeyDown(input.keys.NUM8) || input.isKeyDown(input.keys.UP)) {
       this.endTurn = this.move(
         new Point(this.position.x, this.position.y - 1),
@@ -152,6 +148,10 @@ export default class Player extends Entity {
     ) {
       this.endTurn = this.wait();
     }
+
+    this.checkIfResetInputCooldown(input);
+
+    this.checkTurnUpdate();
   }
   resolveCollision(collider) {
     collider.onCollision(this);
