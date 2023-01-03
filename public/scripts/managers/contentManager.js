@@ -73,14 +73,11 @@ export default class ContentManager {
       this.pcPortrait = image;
     }, "./assets/images/pc-portrait.png");
 
-    this.tiles = [];
-
     for (let i = 0; i <= 38; i++) {
       const url = `./assets/images/tiles/${i}.png`;
 
       this.loadImage((image) => {
         this[i] = image;
-        this.tiles.push(image);
       }, url);
     }
   }
