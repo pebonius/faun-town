@@ -57,6 +57,10 @@ export default class MapEvent extends Entity {
           const map = this.gameScreen.maps.getMapById(mapId);
           this.gameScreen.player.placeOnMap(pos, map);
         };
+      case "playDialogue":
+        return (messages) => {
+          this.gameScreen.ui.playDialogue(messages);
+        };
       case "":
         return () => {};
       default:

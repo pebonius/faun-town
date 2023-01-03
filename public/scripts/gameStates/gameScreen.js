@@ -26,7 +26,6 @@ export default class GameScreen extends GameState {
     this.loadMaps();
     this.loadPlayer();
     this.loadVariables();
-    this.ui.playDialogue(["smoething", "bababa"]);
   }
   loadPlayer() {
     this.player = new Player(this, this.content.data.playerData);
