@@ -30,7 +30,9 @@ export default class Player extends Entity {
     return true;
   }
   update(input) {
-    this.handleKeyInput(input);
+    if (!this.gameScreen.ui.blocksPlayerInput()) {
+      this.handleKeyInput(input);
+    }
   }
   checkTurnUpdate() {
     if (this.endTurn) {
