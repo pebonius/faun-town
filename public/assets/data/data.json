@@ -52,6 +52,23 @@
               ]
             }
           ]
+        },
+        {
+          "name": "secret tree",
+          "posX": 7,
+          "posY": 3,
+          "sprite": "3",
+          "actions": [
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "you have found the secret tree event",
+                  "you feel truly blessed"
+                ]
+              ]
+            }
+          ]
         }
       ]
     }

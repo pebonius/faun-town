@@ -1,6 +1,10 @@
 import Point from "../geometry/point.js";
 import Debug from "../utilities/debug.js";
-import { isFunction, isNonEmptyString } from "../utilities/utilities.js";
+import {
+  isDefined,
+  isFunction,
+  isNonEmptyString,
+} from "../utilities/utilities.js";
 import Entity from "./entity.js";
 
 export default class MapEvent extends Entity {
@@ -31,9 +35,12 @@ export default class MapEvent extends Entity {
   conditionFulfilled() {
     const supportedCondition = this.getSupportedCondition(this.condition);
 
+    if (!isDefined(this.condition) || !isDefined(this.conditionArgs)) {
+      return true;
+    }
+
     return (
       isFunction(supportedCondition) &&
-      this.conditionArgs != undefined &&
       supportedCondition(...this.conditionArgs)
     );
   }
@@ -116,7 +123,7 @@ export default class MapEvent extends Entity {
     this.placeOnMap(position, map);
 
     if (isNonEmptyString(data.sprite)) {
-      this.sprite = data.sprite;
+      this.sprite = this.gameScreen.content[data.sprite];
     } else {
       this.sprite = this.gameScreen.content.pc;
     }

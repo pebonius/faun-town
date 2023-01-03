@@ -79,6 +79,7 @@ export default class ContentManager {
       const url = `./assets/images/tiles/${i}.png`;
 
       this.loadImage((image) => {
+        this[i] = image;
         this.tiles.push(image);
       }, url);
     }
