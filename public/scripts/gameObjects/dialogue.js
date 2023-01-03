@@ -10,8 +10,8 @@ import {
 export default class Dialogue {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.position = new Point(10, 10);
-    this.size = new Point(500, 200);
+    this.position = new Point(20, 360);
+    this.size = new Point(600, 100);
     this.bgColor = "gray";
     this.fontSize = 20;
     this.textColor = "white";

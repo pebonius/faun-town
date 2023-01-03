@@ -7,8 +7,8 @@
   },
   "variables": [
     {
-      "name": "someVariable",
-      "value": 1
+      "name": "townOpen",
+      "value": 0
     }
   ],
   "maps": [
@@ -34,26 +34,20 @@
           "posY": 2,
           "sprite": "",
           "condition": "variableValueIs",
-          "conditionArgs": ["someVariable", 1],
+          "conditionArgs": ["townOpen", 0],
           "actions": [
             {
-              "name": "log",
-              "arguments": ["someVariable is 1"]
-            },
-            {
               "name": "setVariableValue",
-              "arguments": ["someVariable", 2]
-            },
-            {
-              "name": "movePlayer",
-              "arguments": [6, 4, 0]
+              "arguments": ["townOpen", 1]
             },
             {
               "name": "playDialogue",
               "arguments": [
                 [
-                  "this is the first message meofinaoinf",
-                  "lorem ipsum or some shit oifnowenifeawonifaionweofiwe"
+                  "huh?! are you... me?!",
+                  "no, this is a placeholder sprite for events rn",
+                  "cause the dev was lazy",
+                  "anyway you can enter town now you dingdong"
                 ]
               ]
             }
