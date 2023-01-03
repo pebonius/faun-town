@@ -1,3 +1,4 @@
+import Dialogue from "../gameObjects/dialogue.js";
 import Maps from "../gameObjects/maps.js";
 import Player from "../gameObjects/player.js";
 import Variables from "../gameObjects/variables.js";
@@ -10,18 +11,22 @@ export default class GameScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
+    this.dialogue = new Dialogue(this);
     this.load();
   }
   update(input) {
+    this.dialogue.update(input);
     this.player.update(input);
   }
   draw(context, canvas) {
     this.player.map.draw(context);
+    this.dialogue.draw(context);
   }
   load() {
     this.loadMaps();
     this.loadPlayer();
     this.loadVariables();
+    this.dialogue.playDialogue(["smoething", "bababa"]);
   }
   loadPlayer() {
     this.player = new Player(this, this.content.data.playerData);

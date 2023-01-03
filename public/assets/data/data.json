@@ -47,6 +47,13 @@
             {
               "name": "movePlayer",
               "arguments": [6, 4, 0]
+            },
+            {
+              "name": "displayDialogue",
+              "arguments": [
+                "this is the first message meofinaoinf",
+                "lorem ipsum or some shit oifnowenifeawonifaionweofiwe"
+              ]
             }
           ]
         }
