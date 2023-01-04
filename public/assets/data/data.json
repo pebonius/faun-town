@@ -63,8 +63,8 @@
         [16, 17, 3, 1, 9, 3, 1, 1, 15, 16],
         [16, 17, 1, 2, 9, 1, 2, 1, 15, 16],
         [16, 17, 2, 38, 10, 4, 38, 2, 15, 16],
-        [16, 17, 1, 9, 2, 3, 9, 1, 15, 16],
-        [16, 17, 2, 10, 38, 4, 5, 1, 15, 16],
+        [16, 17, 1, 9, 1, 3, 9, 1, 15, 16],
+        [16, 17, 1, 10, 38, 4, 5, 1, 15, 16],
         [16, 17, 1, 1, 9, 1, 1, 3, 15, 16],
         [16, 23, 13, 14, 9, 12, 13, 13, 24, 16],
         [16, 16, 16, 17, 9, 15, 16, 16, 16, 16]
@@ -89,6 +89,54 @@
                   "i have arrived in town.",
                   "it looks really shitty.",
                   "this means rent should be affordable, right?"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "house 1",
+          "posX": 4,
+          "posY": 5,
+          "sprite": "2",
+          "actions": [
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "hello.",
+                  "i wish to rent this property.",
+                  "<<ah, no sorry we're fine.>>",
+                  "the ad i have here says this house is up for rent.",
+                  "i have currency i earned via employment.",
+                  "i wish to use it to rent this house.",
+                  "<<no i mean we only rent to humans, sorry>>",
+                  "ah, i see, i wasn't aware of this.",
+                  "my bad.",
+                  "i will try to rent a different property.",
+                  "<<yeah, sure... whatever>>"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "house 2",
+          "posX": 2,
+          "posY": 6,
+          "sprite": "2",
+          "actions": [
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "hello.",
+                  "i wish to rent this house.",
+                  "<<sure, who is referring you?>>",
+                  "referring?",
+                  "<<we can't just rent to anyone off the street>>",
+                  "<<if you're not a referral please look elsewhere>>",
+                  "right, understood."
                 ]
               ]
             }
