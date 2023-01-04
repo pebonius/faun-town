@@ -7,7 +7,7 @@
   },
   "variables": [
     {
-      "name": "townOpen",
+      "name": "townEntered",
       "value": 0
     }
   ],
@@ -33,25 +33,7 @@
           "posX": 6,
           "posY": 2,
           "sprite": "",
-          "condition": "variableValueIs",
-          "conditionArgs": ["townOpen", 0],
-          "actions": [
-            {
-              "name": "setVariableValue",
-              "arguments": ["townOpen", 1]
-            },
-            {
-              "name": "playDialogue",
-              "arguments": [
-                [
-                  "huh?! are you... me?!",
-                  "no, this is a placeholder sprite for events rn",
-                  "cause the dev was lazy",
-                  "anyway you can enter town now you dingdong"
-                ]
-              ]
-            }
-          ]
+          "actions": [{ "name": "movePlayer", "arguments": [4, 9, 1] }]
         },
         {
           "name": "secret tree",
@@ -65,6 +47,48 @@
                 [
                   "you have found the secret tree event",
                   "you feel truly blessed"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "town",
+      "walkableTiles": [1, 4, 5, 9, 10, 35, 37, 38],
+      "tiles": [
+        [16, 16, 16, 16, 16, 16, 16, 16, 16, 16],
+        [16, 21, 19, 6, 7, 8, 19, 19, 22, 16],
+        [16, 17, 3, 1, 9, 3, 1, 1, 15, 16],
+        [16, 17, 1, 2, 9, 1, 2, 1, 15, 16],
+        [16, 17, 2, 38, 10, 4, 38, 2, 15, 16],
+        [16, 17, 1, 9, 2, 3, 9, 1, 15, 16],
+        [16, 17, 2, 10, 38, 4, 5, 1, 15, 16],
+        [16, 17, 1, 1, 9, 1, 1, 3, 15, 16],
+        [16, 23, 13, 14, 9, 12, 13, 13, 24, 16],
+        [16, 16, 16, 17, 9, 15, 16, 16, 16, 16]
+      ],
+      "events": [
+        {
+          "name": "secret tree",
+          "posX": 4,
+          "posY": 8,
+          "sprite": "",
+          "condition": "variableValueIs",
+          "conditionArgs": ["townEntered", 0],
+          "actions": [
+            {
+              "name": "setVariableValue",
+              "arguments": ["townEntered", 1]
+            },
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "i have arrived in town.",
+                  "it looks really shitty.",
+                  "this means rent should be affordable, right?"
                 ]
               ]
             }

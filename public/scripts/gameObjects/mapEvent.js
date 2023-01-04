@@ -125,7 +125,7 @@ export default class MapEvent extends Entity {
     if (isNonEmptyString(data.sprite)) {
       this.sprite = this.gameScreen.content[data.sprite];
     } else {
-      this.sprite = this.gameScreen.content.pc;
+      this.sprite = null;
     }
     this.condition = data.condition;
     this.conditionArgs = data.conditionArgs;
