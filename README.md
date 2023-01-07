@@ -1,3 +1,3 @@
-# new faun in town
+# faun goes to town
 
-a game.
+a game about a faun who goes to town.

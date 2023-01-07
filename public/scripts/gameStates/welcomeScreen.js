@@ -12,6 +12,7 @@ export default class WelcomeScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
+    this.title = "faun goes to town";
     this.controlLabels = [];
     this.firstLabelPosition = new Point(
       this.canvas.width / 4,
@@ -29,7 +30,7 @@ export default class WelcomeScreen extends GameState {
   }
   addTitle() {
     this.titleLabel = new Label(
-      "new faun in town",
+      this.title,
       new Point(this.canvas.width / 5, (this.canvas.height / 9) * 1),
       42,
       "goldenrod"
