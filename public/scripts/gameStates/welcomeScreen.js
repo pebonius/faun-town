@@ -12,7 +12,7 @@ export default class WelcomeScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
-    this.title = "faun goes to town";
+    this.title = content.data.meta.title;
     this.controlLabels = [];
     this.firstLabelPosition = new Point(
       this.canvas.width / 4,

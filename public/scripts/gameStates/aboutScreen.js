@@ -26,7 +26,7 @@ export default class AboutScreen extends GameState {
   }
   addAboutText() {
     this.textLabel = new Label(
-      "a game by peb.",
+      this.content.data.meta.about,
       new Point(this.canvas.width / 5, (this.canvas.height / 9) * 1),
       26,
       "yellow",

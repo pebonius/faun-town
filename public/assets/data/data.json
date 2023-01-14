@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "faun goes to town",
+    "about": "a game by peb."
+  },
   "playerData": {
     "name": "player",
     "map": 0,
