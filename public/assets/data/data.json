@@ -14,7 +14,9 @@
     {
       "name": "townEntered",
       "value": false
-    }
+    },
+    { "name": "survivorTalked", "value": false },
+    { "name": "caveIntroPlayed", "value": false }
   ],
   "maps": [
     {
@@ -136,6 +138,10 @@
           "sprite": "2",
           "actions": [
             {
+              "name": "setVariableValue",
+              "arguments": ["survivorTalked", true]
+            },
+            {
               "name": "playDialogue",
               "arguments": [
                 [
@@ -215,16 +221,164 @@
           "posX": 4,
           "posY": 2,
           "sprite": "",
+          "condition": "variableValueIs",
+          "conditionArgs": ["survivorTalked", false],
           "actions": [
             {
               "name": "playDialogue",
               "arguments": [
                 [
-                  "this has to be the monster's lair",
-                  "but there is no combat mechanic right now",
-                  "so the game ends here"
+                  "there is some hole here",
+                  "i should check the town for survivors first"
                 ]
               ]
+            }
+          ]
+        },
+        {
+          "name": "town-to-cave",
+          "posX": 4,
+          "posY": 1,
+          "sprite": "",
+          "actions": [{ "name": "movePlayer", "arguments": [4, 9, 2] }]
+        }
+      ]
+    },
+    {
+      "name": "cave",
+      "walkableTiles": [1],
+      "tiles": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+      ],
+      "events": [
+        {
+          "name": "caveIntro",
+          "posX": 4,
+          "posY": 8,
+          "sprite": "",
+          "condition": "variableValueIs",
+          "conditionArgs": ["caveIntroPlayed", false],
+          "actions": [
+            {
+              "name": "setVariableValue",
+              "arguments": ["caveIntroPlayed", true]
+            },
+            {
+              "name": "playDialogue",
+              "arguments": [
+                ["this is the monster's lair?", "something's not right..."]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "cave-to-town",
+          "posX": 4,
+          "posY": 9,
+          "sprite": "",
+          "actions": [
+            {
+              "name": "playDialogue",
+              "arguments": [["i can't go back any more."]]
+            }
+          ]
+        },
+        {
+          "name": "monster",
+          "posX": 4,
+          "posY": 4,
+          "sprite": "pc",
+          "actions": [
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "are you... me?",
+                  "<<yes and no>>",
+                  "<<i am the manifestation of your ego>>",
+                  "<<i am you, yet i am nothing like you>>",
+                  "so i was the monster all along?",
+                  "<<true monster is the one who denies the self>>",
+                  "<<you were always weak>>",
+                  "<<didn't confess to your high school crush>>",
+                  "<<didn't go out with that <person> from art school>>",
+                  "<<you don't even have a t*nder profile>>",
+                  "<<all for fear of rejection>>",
+                  "wait...",
+                  "<<i am not bound by it>>",
+                  "<<i abide by my own rule>>",
+                  "<<i date people!>>",
+                  "please... no more",
+                  "<<i go to clubs on saturdays!!!>>",
+                  "no more!",
+                  "<<I LOST MY VERGONITY AT 24!!>>",
+                  "NOOOOOOO!!!",
+                  "...",
+                  "<<it looks like i have inflicted enough damage>>",
+                  "<<now that you know you cannot win>>",
+                  "<<go back and live the rest of your miserable life>>",
+                  "...",
+                  "... no",
+                  "<<what's that?>>",
+                  "it's true, i might be a hopeless vergine",
+                  "but there is more to life than smexing",
+                  "<<huh?>>",
+                  "why should i make a t*nder profile",
+                  "when i have a fur*ffinity profile?",
+                  "<<wait>>",
+                  "you lost your vergonity at 24?",
+                  "well i was yiffing at 20!",
+                  "<<STOP!>>",
+                  "i have a p*treon with 1k subs!",
+                  "people pay me to draw dragons @%(# each other!!!",
+                  "MY POWER CANNOT BE CONTAINED!!1!1!!!!",
+                  "<<HUAAAAAAAAAAARG!!>>",
+                  "SHWAZONNNNNNG!!",
+                  "(there is a big flash of light)",
+                  "(i am lazy and didn't program that in)",
+                  "(THE END)"
+                ]
+              ]
+            },
+            { "name": "movePlayer", "arguments": [4, 5, 3] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cave end",
+      "walkableTiles": [1],
+      "tiles": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      "events": [
+        {
+          "name": "monster",
+          "posX": 4,
+          "posY": 4,
+          "sprite": "pc",
+          "actions": [
+            {
+              "name": "endGame",
+              "arguments": []
             }
           ]
         }

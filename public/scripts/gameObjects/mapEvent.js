@@ -68,6 +68,10 @@ export default class MapEvent extends Entity {
         return (messages) => {
           this.gameScreen.ui.playDialogue(messages);
         };
+      case "endGame":
+        return () => {
+          this.gameScreen.endGame();
+        };
       case "":
         return () => {};
       default:

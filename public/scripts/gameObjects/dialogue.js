@@ -13,7 +13,7 @@ export default class Dialogue {
     this.position = new Point(20, 360);
     this.size = new Point(600, 100);
     this.bgColor = "gray";
-    this.fontSize = 20;
+    this.fontSize = 18;
     this.textColor = "white";
     this.textPosition = new Point(this.position.x + 10, this.position.y + 10);
   }
@@ -51,7 +51,7 @@ export default class Dialogue {
       drawText(
         context,
         this.messages[0],
-        20,
+        this.fontSize,
         this.textColor,
         this.textPosition.x,
         this.textPosition.y
