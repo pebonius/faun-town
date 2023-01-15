@@ -4,6 +4,7 @@ import { cloneArray } from "../utilities/utilities.js";
 export default class Variables {
   constructor(gameScreen, data) {
     this.gameScreen = gameScreen;
+    this.variables = [];
     this.load(data);
   }
   addVariable(variableName, variableValue) {
@@ -48,6 +49,8 @@ export default class Variables {
     return variable.value <= value;
   }
   load(data) {
-    this.variables = cloneArray(data);
+    data.forEach((element) => {
+      this.addVariable(element.name, element.value);
+    });
   }
 }
