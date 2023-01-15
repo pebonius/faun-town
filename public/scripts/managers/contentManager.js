@@ -1,4 +1,5 @@
 import {
+  arrayContains,
   checkForArray,
   isBool,
   isFunction,
@@ -90,7 +91,6 @@ export default class ContentManager {
     assetInjection(image);
 
     const onLoad = () => {
-      this.debugLogAssetLoaded(filePath);
       this.removeFromLoadingArray(filePath);
     };
 
@@ -112,7 +112,6 @@ export default class ContentManager {
 
     audio.oncanplay = (e) => {
       assetInjection(audio);
-      this.debugLogAssetLoaded(filePath);
       this.removeFromLoadingArray(filePath);
 
       audio.oncanplay = (e) => {};
@@ -129,7 +128,6 @@ export default class ContentManager {
       .then((response) => response.json())
       .then((json) => {
         assetInjection(json);
-        this.debugLogAssetLoaded(filePath);
         this.removeFromLoadingArray(filePath);
       });
   }
@@ -149,7 +147,10 @@ export default class ContentManager {
     this.assetsCurrentlyLoading.push(filePath);
   }
   removeFromLoadingArray(filePath) {
-    removeFromArray(this.assetsCurrentlyLoading, filePath);
+    if (arrayContains(this.assetsCurrentlyLoading, filePath)) {
+      removeFromArray(this.assetsCurrentlyLoading, filePath);
+      this.debugLogAssetLoaded(filePath);
+    }
 
     this.checkIfLoadingFinished();
   }
