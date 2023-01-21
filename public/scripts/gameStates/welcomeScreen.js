@@ -22,7 +22,15 @@ export default class WelcomeScreen extends GameState {
     this.addTitle();
     this.addControlLabel("enter", "start game");
     this.addControlLabel("a", "about");
+    this.playMenuMusic();
   }
+  playMenuMusic() {
+    this.sound.playMusic(
+      this.content.getAssetByName(this.content.data.meta.menuMusic),
+      true
+    );
+  }
+
   addBackgroundImage() {
     this.bgImage = this.content.getAssetByName(
       this.content.data.meta.menuBackground

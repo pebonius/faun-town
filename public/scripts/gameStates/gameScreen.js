@@ -27,6 +27,10 @@ export default class GameScreen extends GameState {
     this.loadMaps();
     this.loadPlayer();
     this.loadVariables();
+    this.playStartingEvent();
+  }
+  playStartingEvent() {
+    this.sound.playMusic(null);
   }
   loadPlayer() {
     this.player = new Player(this, this.content.data.playerData);

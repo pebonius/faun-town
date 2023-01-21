@@ -6,3 +6,6 @@ https://opengameart.org/content/legend-of-faune
 
 town tileset by Beast taken from:
 https://opengameart.org/content/overworld-grass-biome
+
+menu music by SubspaceAudio taken from:
+https://opengameart.org/content/jrpg-pack-2-towns

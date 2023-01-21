@@ -62,9 +62,9 @@ export default class ContentManager {
     }, "./assets/data/data.json");
   }
   loadSounds() {
-    // this.loadAudio((audio) => {
-    //   this.sound = audio;
-    // }, "./assets/music/sound.ogg");
+    this.loadAudio((audio) => {
+      this.hometown = audio;
+    }, "./assets/music/hometown.ogg");
   }
   loadImages() {
     this.loadImage((image) => {
