@@ -5,13 +5,13 @@ import Entity from "./entity.js";
 export default class Player extends Entity {
   constructor(gameScreen, data) {
     super(gameScreen);
-    this.sprite = this.gameScreen.content.pc;
     this.inputDelay = 10;
     this.inputCooldown = 0;
     this.load(data);
   }
   load(data) {
     this.name = data.name;
+    this.sprite = this.gameScreen.content.getAssetByName(data.sprite);
     const startingMap = this.gameScreen.maps.getMapById(data.map);
     const startingPosition = new Point(data.posX, data.posY);
     this.placeOnMap(startingPosition, startingMap);

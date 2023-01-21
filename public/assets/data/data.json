@@ -1,13 +1,16 @@
 {
   "meta": {
     "title": "faun goes to town",
+    "menuBackground": "pcPortrait",
+    "menuMusic": "",
     "about": "a game by peb."
   },
   "playerData": {
     "name": "player",
     "map": 0,
     "posX": 2,
-    "posY": 5
+    "posY": 5,
+    "sprite": "pc"
   },
   "variables": [
     { "name": "introPlayed", "value": false },

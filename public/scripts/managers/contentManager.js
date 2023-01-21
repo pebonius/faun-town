@@ -2,6 +2,7 @@ import {
   arrayContains,
   checkForArray,
   isBool,
+  isDefined,
   isFunction,
   isNonEmptyString,
   noCacheInit,
@@ -170,5 +171,12 @@ export default class ContentManager {
       "assets currently loading: " + this.assetsCurrentlyLoading.length
     );
     Debug.log("loading all assets triggered: " + this.loadingAllTriggered);
+  }
+  getAssetByName(assetName) {
+    if (!isDefined(this[assetName])) {
+      throw new Error(`asset <<${assetName}>> has not been defined`);
+    }
+
+    return this[assetName];
   }
 }

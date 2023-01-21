@@ -45,7 +45,7 @@ export default class Tilemap {
     return null;
   }
   getTileImage(tileId) {
-    return this.gameScreen.content[tileId];
+    return this.gameScreen.content.getAssetByName(tileId);
   }
   getTileWalkable(tileId) {
     return arrayContains(this.walkableTiles, tileId);

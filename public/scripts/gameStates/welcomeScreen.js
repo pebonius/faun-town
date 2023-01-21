@@ -24,7 +24,9 @@ export default class WelcomeScreen extends GameState {
     this.addControlLabel("a", "about");
   }
   addBackgroundImage() {
-    this.bgImage = this.content.pcPortrait;
+    this.bgImage = this.content.getAssetByName(
+      this.content.data.meta.menuBackground
+    );
     this.bgPos = new Point(0, 0);
     this.bgSize = new Point(640, 480);
   }

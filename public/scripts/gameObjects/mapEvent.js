@@ -127,7 +127,7 @@ export default class MapEvent extends Entity {
     this.placeOnMap(position, map);
 
     if (isNonEmptyString(data.sprite)) {
-      this.sprite = this.gameScreen.content[data.sprite];
+      this.sprite = this.gameScreen.content.getAssetByName(data.sprite);
     } else {
       this.sprite = null;
     }
