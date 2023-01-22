@@ -1,7 +1,6 @@
 import GameState from "./gameState.js";
-import Point from "../geometry/point.js";
-import Label from "../ui/label.js";
 import WelcomeScreen from "./welcomeScreen.js";
+import { drawText } from "../utilities/graphics.js";
 
 export default class LoadingScreen extends GameState {
   constructor(gameStates, canvas, input, content, sound) {
@@ -10,23 +9,23 @@ export default class LoadingScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
-    this.addLoadingLabel();
+    this.loadingFinished = false;
+    this.loadingTextPosX = this.canvas.width / 3;
+    this.loadingTextPosY = (this.canvas.height / 4) * 3;
+
     this.loadContent();
+  }
+  get labelText() {
+    if (this.loadingFinished) {
+      return "press ENTER";
+    }
+    return "loading...";
   }
   loadContent() {
     this.content.onFinishedLoading = () => {
-      this.showWelcomeScreen();
+      this.loadingFinished = true;
     };
     this.content.loadContent();
-  }
-  addLoadingLabel() {
-    this.loadingLabel = new Label(
-      "loading...",
-      new Point(this.canvas.width / 3, (this.canvas.height / 4) * 3),
-      26,
-      "white",
-      "blue"
-    );
   }
   showWelcomeScreen() {
     this.gameStates.push(
@@ -40,8 +39,20 @@ export default class LoadingScreen extends GameState {
     );
     this.kill();
   }
+  update(input) {
+    if (this.loadingFinished && input.isKeyPressed(input.keys.ENTER)) {
+      this.showWelcomeScreen();
+    }
+  }
   draw(context, canvas) {
     super.draw(context, canvas);
-    this.loadingLabel.draw(context);
+    drawText(
+      context,
+      this.labelText,
+      26,
+      "white",
+      this.loadingTextPosX,
+      this.loadingTextPosY
+    );
   }
 }
