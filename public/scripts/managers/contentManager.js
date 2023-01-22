@@ -52,6 +52,7 @@ export default class ContentManager {
   loadContent() {
     this.loadImages();
     this.loadSounds();
+    this.loadMusic();
     this.loadData();
 
     this.loadingAllTriggered = true;
@@ -61,19 +62,24 @@ export default class ContentManager {
       this.data = json;
     }, "./assets/data/data.json");
   }
-  loadSounds() {
-    this.loadAudio((audio) => {
-      this.hometown = audio;
-    }, "./assets/music/hometown.ogg");
+  loadSounds() {}
+  loadMusic() {
+    const tracks = ["hometown", "prairieNights", "catacombs", "fightFor"];
+
+    tracks.forEach((element) => {
+      this.loadAudio((audio) => {
+        this[element] = audio;
+      }, `./assets/music/${element}.ogg`);
+    });
   }
   loadImages() {
-    this.loadImage((image) => {
-      this.pc = image;
-    }, "./assets/images/pc.png");
+    const images = ["pc", "pcPortrait"];
 
-    this.loadImage((image) => {
-      this.pcPortrait = image;
-    }, "./assets/images/pc-portrait.png");
+    images.forEach((element) => {
+      this.loadImage((image) => {
+        this[element] = image;
+      }, `./assets/images/${element}.png`);
+    });
 
     for (let i = 0; i <= 38; i++) {
       const url = `./assets/images/tiles/${i}.png`;

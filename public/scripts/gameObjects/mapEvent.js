@@ -68,6 +68,11 @@ export default class MapEvent extends Entity {
         return (messages) => {
           this.gameScreen.ui.playDialogue(messages);
         };
+      case "playMusic":
+        return (trackName, looped) => {
+          const track = this.gameScreen.content.getAssetByName(trackName);
+          this.gameScreen.sound.playMusic(track, looped);
+        };
       case "endGame":
         return () => {
           this.gameScreen.endGame();

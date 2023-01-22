@@ -39,6 +39,33 @@
       ],
       "events": [
         {
+          "name": "intro",
+          "posX": 2,
+          "posY": 6,
+          "sprite": "",
+          "condition": "variableValueIs",
+          "conditionArgs": ["introPlayed", false],
+          "actions": [
+            {
+              "name": "playMusic",
+              "arguments": ["prairieNights", true]
+            },
+            {
+              "name": "setVariableValue",
+              "arguments": ["introPlayed", true]
+            },
+            {
+              "name": "playDialogue",
+              "arguments": [
+                [
+                  "i heard a nearby town was decimated by a monster",
+                  "i have to go check it out and help or something"
+                ]
+              ]
+            }
+          ]
+        },
+        {
           "name": "overworld-to-town",
           "posX": 6,
           "posY": 2,
@@ -57,29 +84,6 @@
                 [
                   "<<you have found the secret tree event>>",
                   "<<you feel truly blessed>>"
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "name": "intro",
-          "posX": 2,
-          "posY": 6,
-          "sprite": "",
-          "condition": "variableValueIs",
-          "conditionArgs": ["introPlayed", false],
-          "actions": [
-            {
-              "name": "setVariableValue",
-              "arguments": ["introPlayed", true]
-            },
-            {
-              "name": "playDialogue",
-              "arguments": [
-                [
-                  "i heard a nearby town was decimated by a monster",
-                  "i have to go check it out and help or something"
                 ]
               ]
             }
@@ -243,7 +247,13 @@
           "posX": 4,
           "posY": 1,
           "sprite": "",
-          "actions": [{ "name": "movePlayer", "arguments": [4, 9, 2] }]
+          "actions": [
+            {
+              "name": "playMusic",
+              "arguments": ["catacombs", true]
+            },
+            { "name": "movePlayer", "arguments": [4, 9, 2] }
+          ]
         }
       ]
     },
@@ -291,7 +301,7 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["i can't go back any more."]]
+              "arguments": [["i can't run from this any more."]]
             }
           ]
         },
@@ -301,6 +311,10 @@
           "posY": 4,
           "sprite": "pc",
           "actions": [
+            {
+              "name": "playMusic",
+              "arguments": ["fightFor", true]
+            },
             {
               "name": "playDialogue",
               "arguments": [
@@ -339,6 +353,7 @@
                   "when i have a fur*ffinity profile?",
                   "<<wait>>",
                   "you lost your vergonity at 24?",
+                  "<<stop...>>",
                   "well i was yiffing at 20!",
                   "<<STOP!>>",
                   "i have a p*treon with 1k subs!",

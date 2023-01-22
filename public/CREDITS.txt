@@ -4,8 +4,13 @@ https://pebonius.itch.io/
 player character sprites and portrait (title screen) by ansimuz, taken from:
 https://opengameart.org/content/legend-of-faune
 
-town tileset by Beast taken from:
+town tileset by beast taken from:
 https://opengameart.org/content/overworld-grass-biome
 
-menu music by SubspaceAudio taken from:
-https://opengameart.org/content/jrpg-pack-2-towns
+music tracks by subspaceaudio:
+hometown https://opengameart.org/content/jrpg-pack-2-towns
+prairie nights https://opengameart.org/content/jrpg-pack-1-exploration
+catacombs https://opengameart.org/content/jrpg-pack-3-evil
+
+music tracks by nene:
+fight for better future https://opengameart.org/content/fight-for-better-future-rockmetal
