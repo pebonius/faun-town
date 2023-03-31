@@ -15,38 +15,6 @@ export default class InputManager {
     this.currentKeysDown = [];
     this.previousKeysDown = [];
     this.keys = {};
-    this.mouseClickSubscribers = [];
-  }
-  get mouseClickSubscribers() {
-    return this._mouseClickSubscribers;
-  }
-  set mouseClickSubscribers(value) {
-    checkForArray(value, "mouseClickSubscribers");
-
-    this._mouseClickSubscribers = value;
-  }
-  addMouseClickSubscriber(subscriber) {
-    if (this.mouseClickSubscribers.length >= maxNumber) {
-      Debug.log("too many ui inputSubscribers!");
-    }
-
-    if (!isFunction(subscriber.handleMouseClick)) {
-      throw new Error(
-        "trying to add input subscriber who cannot handle mouse clicks"
-      );
-    }
-
-    if (arrayContains(this.mouseClickSubscribers, subscriber)) {
-      throw new Error("trying to add same input subscriber twice");
-    }
-
-    this.mouseClickSubscribers.push(subscriber);
-  }
-  removeMouseClickSubscriber(subscriber) {
-    removeFromArray(this.mouseClickSubscribers, subscriber);
-  }
-  clearMouseClickSubscribers() {
-    clearArray(this.mouseClickSubscribers);
   }
   addKeys() {
     this.keys = {
@@ -180,9 +148,6 @@ export default class InputManager {
       },
       false
     );
-    this.canvas.addEventListener("click", (e) => {
-      this.mouseClick(e);
-    });
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
@@ -206,10 +171,5 @@ export default class InputManager {
   cursorPosition(e) {
     const rect = this.canvas.getBoundingClientRect();
     return new Point(e.clientX - rect.left, e.clientY - rect.top);
-  }
-  mouseClick(e) {
-    this.mouseClickSubscribers.forEach((element) => {
-      element.handleMouseClick(this, e);
-    });
-  }
+  } 
 }
