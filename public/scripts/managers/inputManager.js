@@ -190,6 +190,16 @@ export default class InputManager {
     this.downclick = false;
     return click;
   }
+  isLeftClick() {
+    const click = this.leftclick;
+    this.leftclick = false;
+    return click;
+  }
+  isRightClick() {
+    const click = this.rightclick;
+    this.rightclick = false;
+    return click;
+  }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
   }
