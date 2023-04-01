@@ -155,6 +155,11 @@ export default class InputManager {
       const x = e.clientX;
       const y = e.clientY;
 
+      if (x < this.canvas.width / 4) {
+        this.leftClick = true;
+      } else if (x > (this.canvas.width / 4) * 3) {
+        this.rightclick = true;
+      }
       if (y < this.canvas.height / 4) {
         this.upclick = true;
       } else if (y > (this.canvas.height / 4) * 3) {
@@ -166,6 +171,8 @@ export default class InputManager {
       this.isclick = false;
       this.upclick = false;
       this.downclick = false;
+      this.rightclick = false;
+      this.leftClick = false;
     });
   }
   isClick() {
