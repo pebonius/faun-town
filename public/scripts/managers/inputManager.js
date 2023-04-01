@@ -154,7 +154,7 @@ export default class InputManager {
   }
   handleclick(e) {
     // handle a click on canvas
-    Debug.log("click");
+    this.isClick = true;
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
@@ -168,6 +168,7 @@ export default class InputManager {
   update() {
     this.previousKeysDown = cloneArray(this.currentKeysDown);
     this.currentKeysDown = cloneArray(this.keysDown);
+    this.isClick = false;
   }
   isKeyPressed(key) {
     return this.currentKeysDown[key] && this.previousKeysDown[key] !== true;
