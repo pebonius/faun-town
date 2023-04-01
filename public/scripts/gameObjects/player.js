@@ -95,14 +95,19 @@ export default class Player extends Entity {
       return;
     }
 
-    if (input.isKeyDown(input.keys.NUM8) || input.isKeyDown(input.keys.UP)) {
+    if (
+      input.isKeyDown(input.keys.NUM8) ||
+      input.isKeyDown(input.keys.UP) ||
+      input.isUpClick()
+    ) {
       this.endTurn = this.move(
         new Point(this.position.x, this.position.y - 1),
         this.map
       );
     } else if (
       input.isKeyDown(input.keys.NUM2) ||
-      input.isKeyDown(input.keys.DOWN)
+      input.isKeyDown(input.keys.DOWN) ||
+      input.isDownClick()
     ) {
       this.endTurn = this.move(
         new Point(this.position.x, this.position.y + 1),
