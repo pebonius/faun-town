@@ -115,7 +115,8 @@ export default class Player extends Entity {
       );
     } else if (
       input.isKeyDown(input.keys.NUM4) ||
-      input.isKeyDown(input.keys.LEFT)
+      input.isKeyDown(input.keys.LEFT) ||
+      input.isLeftClick()
     ) {
       this.endTurn = this.move(
         new Point(this.position.x - 1, this.position.y),
@@ -123,7 +124,8 @@ export default class Player extends Entity {
       );
     } else if (
       input.isKeyDown(input.keys.NUM6) ||
-      input.isKeyDown(input.keys.RIGHT)
+      input.isKeyDown(input.keys.RIGHT) ||
+      input.isRightClick()
     ) {
       this.endTurn = this.move(
         new Point(this.position.x + 1, this.position.y),
