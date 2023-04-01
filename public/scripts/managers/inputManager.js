@@ -148,6 +148,13 @@ export default class InputManager {
       },
       false
     );
+    this.canvas.addEventListener("click", (e) => {
+      this.handleclick(e);
+    });
+  }
+  handleclick(e) {
+    // handle a click on canvas
+    Debug.log("click");
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
@@ -171,5 +178,5 @@ export default class InputManager {
   cursorPosition(e) {
     const rect = this.canvas.getBoundingClientRect();
     return new Point(e.clientX - rect.left, e.clientY - rect.top);
-  } 
+  }
 }
