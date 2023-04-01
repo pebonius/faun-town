@@ -151,15 +151,36 @@ export default class InputManager {
     this.canvas.addEventListener("pointerdown", (e) => {
       e.preventDefault();
       this.isclick = true;
+
+      const x = e.clientX;
+      const y = e.clientY;
+
+      if (y < this.canvas.height / 4) {
+        this.upclick = true;
+      } else if (y > (thiz.canvas.height / 4) * 3) {
+        this.downclick = true;
+      }
     });
     this.canvas.addEventListener("pointerup", (e) => {
       e.preventDefault();
       this.isclick = false;
+      this.upclick = false;
+      this.downclick = false;
     });
   }
   isClick() {
     const click = this.isclick;
     this.isclick = false;
+    return click;
+  }
+  isUpClick() {
+    const click = this.upclick;
+    this.upclick = false;
+    return click;
+  }
+  isDownClick() {
+    const click = this.downclick;
+    this.downclick = false;
     return click;
   }
   cacheKeysDown() {
