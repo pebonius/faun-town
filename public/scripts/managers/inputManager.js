@@ -157,7 +157,7 @@ export default class InputManager {
 
       if (y < this.canvas.height / 4) {
         this.upclick = true;
-      } else if (y > (thiz.canvas.height / 4) * 3) {
+      } else if (y > (this.canvas.height / 4) * 3) {
         this.downclick = true;
       }
     });
