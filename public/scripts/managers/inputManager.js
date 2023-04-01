@@ -150,12 +150,17 @@ export default class InputManager {
     );
     this.canvas.addEventListener("pointerdown", (e) => {
       e.preventDefault();
-      this.isClick = true;
+      this.isclick = true;
     });
     this.canvas.addEventListener("pointerup", (e) => {
       e.preventDefault();
-      this.isClick = false;
+      this.isclick = false;
     });
+  }
+  isClick() {
+    const click = this.isclick;
+    this.isclick = false;
+    return click;
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);

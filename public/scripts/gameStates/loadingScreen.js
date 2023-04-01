@@ -40,9 +40,8 @@ export default class LoadingScreen extends GameState {
     this.kill();
   }
   update(input) {
-    if (this.loadingFinished && (input.isKeyPressed(input.keys.ENTER) || input.isClick)) {
+    if (this.loadingFinished && (input.isKeyPressed(input.keys.ENTER) || input.isClick())) {
       this.showWelcomeScreen();
-      input.isClick = false;
     }
   }
   draw(context, canvas) {
