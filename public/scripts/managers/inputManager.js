@@ -148,13 +148,14 @@ export default class InputManager {
       },
       false
     );
-    this.canvas.addEventListener("click", (e) => {
-      this.handleclick(e);
+    this.canvas.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      this.isClick = true;
     });
-  }
-  handleclick(e) {
-    // handle a click on canvas
-    this.isClick = true;
+    this.canvas.addEventListener("pointerup", (e) => {
+      e.preventDefault();
+      this.isClick = false;
+    });
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
@@ -168,7 +169,6 @@ export default class InputManager {
   update() {
     this.previousKeysDown = cloneArray(this.currentKeysDown);
     this.currentKeysDown = cloneArray(this.keysDown);
-    this.isClick = false;
   }
   isKeyPressed(key) {
     return this.currentKeysDown[key] && this.previousKeysDown[key] !== true;
