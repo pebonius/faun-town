@@ -159,8 +159,7 @@ export default class InputManager {
         this.leftClick = true;
       } else if (x > (this.canvas.width / 4) * 3) {
         this.rightclick = true;
-      }
-      if (y < this.canvas.height / 4) {
+      } else if (y < this.canvas.height / 4) {
         this.upclick = true;
       } else if (y > (this.canvas.height / 4) * 3) {
         this.downclick = true;
