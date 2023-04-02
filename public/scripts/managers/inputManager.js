@@ -169,10 +169,10 @@ export default class InputManager {
       e.preventDefault();
       this.consumeClick();
     });
-    this.canvas.addEventListener("pointercancel", (e) => {
-      e.preventDefault();
-      this.consumeClick();
-    });
+    // this.canvas.addEventListener("pointercancel", (e) => {
+    //  e.preventDefault();
+    //  this.consumeClick();
+    //});
   }
   isClick() {
     const click = this.isclick;
