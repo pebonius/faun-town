@@ -181,22 +181,22 @@ export default class InputManager {
   }
   isUpClick() {
     const click = this.upclick;
-    this.consumeClick();
+    this.upclick = false;
     return click;
   }
   isDownClick() {
     const click = this.downclick;
-    this.consumeClick();
+    this.downclick = false;
     return click;
   }
   isLeftClick() {
     const click = this.leftclick;
-    this.consumeClick();
+    this.leftclick = false;
     return click;
   }
   isRightClick() {
     const click = this.rightclick;
-    this.consumeClick();
+    this.rightclick = false;
     return click;
   }
   consumeClick() {
