@@ -152,8 +152,9 @@ export default class InputManager {
       e.preventDefault();
       this.isclick = true;
 
-      const x = e.clientX;
-      const y = e.clientY;
+      let bounds = this.canvas.getBoundingClientRect();
+      let x = e.clientX - bounds.left;
+      let y = e.clientY - bounds.top;
 
       if (x < this.canvas.width / 4) {
         this.leftclick = true;
