@@ -156,7 +156,7 @@ export default class InputManager {
       const y = e.clientY;
 
       if (x < this.canvas.width / 4) {
-        this.leftClick = true;
+        this.leftclick = true;
       } else if (x > (this.canvas.width / 4) * 3) {
         this.rightclick = true;
       } else if (y < this.canvas.height / 4) {
@@ -201,10 +201,10 @@ export default class InputManager {
   }
   consumeClick() {
     this.isclick = false;
-    this.isupclick = false;
-    this.isdownclick = false;
-    this.isleftclick = false;
-    this.isrightclick = false;
+    this.upclick = false;
+    this.downclick = false;
+    this.leftclick = false;
+    this.rightclick = false;
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
