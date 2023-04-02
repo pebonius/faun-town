@@ -152,7 +152,7 @@ export default class InputManager {
       e.preventDefault();
       this.isclick = true;
 
-      let bounds = this.canvas.getBoundingClientRect();
+      let bounds = document.getBoundingClientRect();
       let x = e.clientX - bounds.left;
       let y = e.clientY - bounds.top;
 
