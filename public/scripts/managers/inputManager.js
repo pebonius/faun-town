@@ -168,37 +168,44 @@ export default class InputManager {
     });
     this.canvas.addEventListener("pointerup", (e) => {
       e.preventDefault();
-      this.isclick = false;
-      this.upclick = false;
-      this.downclick = false;
-      this.rightclick = false;
-      this.leftClick = false;
+      this.consumeClick();
+    });
+    this.canvas.addEventListener("pointercancel", (e) => {
+      e.preventDefault();
+      this.consumeClick();
     });
   }
   isClick() {
     const click = this.isclick;
-    this.isclick = false;
+    this.consumeClick();
     return click;
   }
   isUpClick() {
     const click = this.upclick;
-    this.upclick = false;
+    this.consumeClick();
     return click;
   }
   isDownClick() {
     const click = this.downclick;
-    this.downclick = false;
+    this.consumeClick();
     return click;
   }
   isLeftClick() {
     const click = this.leftclick;
-    this.leftclick = false;
+    this.consumeClick();
     return click;
   }
   isRightClick() {
     const click = this.rightclick;
-    this.rightclick = false;
+    this.consumeClick();
     return click;
+  }
+  consumeClick() {
+    this.isclick = false;
+    this.isupclick = false;
+    this.isdownclick = false;
+    this.isleftclick = false;
+    this.isrightclick = false;
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
