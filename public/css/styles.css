@@ -5,8 +5,22 @@ html {
 }
 
 canvas {
+  width: 640px;
+  height: 420px;
   background: #000;
   display: block;
   margin: auto;
   touch-action: none;
+}
+
+@media (max-width: 639px) {
+  canvas {
+    width: 100vw;
+  }
+}
+
+@media (max-height: 479) {
+  canvas {
+    height: 100vh;
+  }
 }
