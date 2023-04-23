@@ -14,7 +14,7 @@ import MapEvent from "./mapEvent.js";
 export default class Tilemap {
   constructor(gameScreen, data) {
     this.gameScreen = gameScreen;
-    this.tileSize = new Point(this.gamescreen.canvas.width / 10, this.gamescreen.canvas.height / 10);
+    this.tileSize = new Point(this.gameScreen.canvas.width / 10, this.gameScreen.canvas.height / 10);
     this.load(data);
   }
   toString() {
