@@ -110,6 +110,8 @@ export default class Game {
     lastElementInArray(this.gameStates).update(this.input);
   }
   draw() {
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
     clearContext(this.context, this.canvas);
     lastElementInArray(this.gameStates).draw(this.context, this.canvas);
   }
