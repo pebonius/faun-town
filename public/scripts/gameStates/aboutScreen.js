@@ -15,6 +15,8 @@ export default class AboutScreen extends GameState {
       this.canvas.width / 4,
       (this.canvas.height / 7) * 5
     );
+    this.fontSize = this.canvas.width * 0.04;
+    this.menuEntryPadding = this.canvas.width * 0.05;
     this.addBackgroundImage();
     this.addAboutText();
     this.addControlLabel("B", "back to menu");
@@ -24,13 +26,13 @@ export default class AboutScreen extends GameState {
       this.content.data.meta.menuBackground
     );
     this.bgPos = new Point(0, 0);
-    this.bgSize = new Point(640, 480);
+    this.bgSize = new Point(this.canvas.width, this.canvas.height);
   }
   addAboutText() {
     this.textLabel = new Label(
       this.content.data.meta.about,
       new Point(this.canvas.width / 5, (this.canvas.height / 9) * 1),
-      26,
+      this.fontSize,
       "yellow",
       "seagreen"
     );
@@ -42,9 +44,10 @@ export default class AboutScreen extends GameState {
         labelText,
         new Point(
           this.firstLabelPosition.x,
-          this.firstLabelPosition.y + 30 * this.controlLabels.length
+          this.firstLabelPosition.y +
+            this.menuEntryPadding * this.controlLabels.length
         ),
-        26,
+        this.fontSize,
         "yellow",
         "seagreen"
       )

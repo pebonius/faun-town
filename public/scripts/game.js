@@ -32,7 +32,6 @@ export default class Game {
     value.oncontextmenu = (e) => {
       e.preventDefault();
     };
-    value.getContext("2d").imageSmoothingEnabled = false;
     this._canvas = value;
   }
   get context() {
@@ -84,7 +83,23 @@ export default class Game {
     }
     this._isRunning = value;
   }
+  scaleCanvas() {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const aspectRatio = 3 / 4;
+
+    if (windowWidth * aspectRatio < windowHeight) {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = this.canvas.width * aspectRatio;
+    } else {
+      this.canvas.height = windowHeight;
+      this.canvas.width = this.canvas.height / aspectRatio;
+    }
+
+    this.context.imageSmoothingEnabled = false;
+  }
   initialize() {
+    this.scaleCanvas();
     this.credits.tryFetchCredits("./CREDITS.txt");
     this.input.addEvents();
     this.input.addKeys();
@@ -110,8 +125,6 @@ export default class Game {
     lastElementInArray(this.gameStates).update(this.input);
   }
   draw() {
-    this.canvas.width  = window.innerWidth;
-    this.canvas.height = window.innerHeight;
     clearContext(this.context, this.canvas);
     lastElementInArray(this.gameStates).draw(this.context, this.canvas);
   }

@@ -10,12 +10,19 @@ import {
 export default class Dialogue {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.position = new Point(20, 360);
-    this.size = new Point(600, 100);
+    this.canvas = gameScreen.canvas;
+    this.position = new Point(
+      this.canvas.width * 0.03,
+      this.canvas.height * 0.76
+    );
+    this.size = new Point(this.canvas.width * 0.93, this.canvas.height * 0.2);
     this.bgColor = "gray";
-    this.fontSize = 18;
+    this.fontSize = this.canvas.width * 0.03;
     this.textColor = "white";
-    this.textPosition = new Point(this.position.x + 10, this.position.y + 10);
+    this.textPosition = new Point(
+      this.position.x + this.canvas.width * 0.015,
+      this.position.y + this.canvas.height * 0.015
+    );
   }
   playDialogue(messages) {
     checkForArray(messages, "messages");

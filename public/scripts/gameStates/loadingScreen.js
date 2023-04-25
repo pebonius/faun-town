@@ -9,6 +9,7 @@ export default class LoadingScreen extends GameState {
     this.input = input;
     this.content = content;
     this.sound = sound;
+    this.fontSize = this.canvas.width * 0.04;
     this.loadingFinished = false;
     this.loadingTextPosX = this.canvas.width / 3;
     this.loadingTextPosY = (this.canvas.height / 4) * 3;
@@ -40,7 +41,10 @@ export default class LoadingScreen extends GameState {
     this.kill();
   }
   update(input) {
-    if (this.loadingFinished && (input.isKeyPressed(input.keys.ENTER) || input.isClick())) {
+    if (
+      this.loadingFinished &&
+      (input.isKeyPressed(input.keys.ENTER) || input.isClick())
+    ) {
       this.showWelcomeScreen();
     }
   }
@@ -49,7 +53,7 @@ export default class LoadingScreen extends GameState {
     drawText(
       context,
       this.labelText,
-      26,
+      this.fontSize,
       "white",
       this.loadingTextPosX,
       this.loadingTextPosY
