@@ -149,7 +149,6 @@ export default class InputManager {
       false
     );
     this.canvas.addEventListener("pointerdown", (e) => {
-      e.preventDefault();
       this.isclick = true;
 
       const bounds = this.canvas.getBoundingClientRect();
@@ -167,11 +166,9 @@ export default class InputManager {
       }
     });
     this.canvas.addEventListener("pointerup", (e) => {
-      e.preventDefault();
       this.consumeClick();
     });
     this.canvas.addEventListener("pointercancel", (e) => {
-      e.preventDefault();
       this.consumeClick();
     });
   }
