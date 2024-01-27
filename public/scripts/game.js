@@ -127,6 +127,7 @@ export default class Game {
   draw() {
     clearContext(this.context, this.canvas);
     lastElementInArray(this.gameStates).draw(this.context, this.canvas);
+    this.input.draw(this.context);
   }
   gameLoop(self) {
     self.update();
