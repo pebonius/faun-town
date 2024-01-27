@@ -156,15 +156,24 @@ export default class InputManager {
       const bounds = this.canvas.getBoundingClientRect();
       const x = e.clientX - bounds.left;
       const y = e.clientY - bounds.top;
+      const clickPos = new Point(x, y);
 
-      if (x < this.canvas.width / 4) {
-        this.leftclick = true;
-      } else if (x > (this.canvas.width / 4) * 3) {
-        this.rightclick = true;
-      } else if (y < this.canvas.height / 4) {
+      const upArrowRect = this.controlButtons.upArrowRect;
+      const downArrowRect = this.controlButtons.downArrowRect;
+      const leftArrowRect = this.controlButtons.leftArrowRect;
+      const rightArrowRect = this.controlButtons.rightArrowRect;
+      const enterRect = this.controlButtons.enterRect;
+
+      if (upArrowRect.contains(clickPos)) {
         this.upclick = true;
-      } else if (y > (this.canvas.height / 4) * 3) {
+      } else if (downArrowRect.contains(clickPos)) {
         this.downclick = true;
+      } else if (leftArrowRect.contains(clickPos)) {
+        this.leftclick = true;
+      } else if (rightArrowRect.contains(clickPos)) {
+        this.rightclick = true;
+      } else if (enterRect.contains(clickPos)) {
+        this.enterclick = true;
       }
     });
     this.canvas.addEventListener("pointerup", (e) => {
@@ -203,12 +212,19 @@ export default class InputManager {
     this.isclick = false;
     return click;
   }
+  isEnterClick() {
+    const click = this.enterclick;
+    this.enterclick = false;
+    this.isclick = false;
+    return click;
+  }
   consumeClick() {
     this.isclick = false;
     this.upclick = false;
     this.downclick = false;
     this.leftclick = false;
     this.rightclick = false;
+    this.enterclick = false;
   }
   cacheKeysDown() {
     this.previousKeysDown = cloneArray(this.keysDown);
@@ -219,12 +235,12 @@ export default class InputManager {
   keyUp(e) {
     this.keysDown[e.keyCode] = false;
   }
-  draw(context) {
-    this.controlButtons.draw(context);
-  }
   update() {
     this.previousKeysDown = cloneArray(this.currentKeysDown);
     this.currentKeysDown = cloneArray(this.keysDown);
+  }
+  draw(context) {
+    this.controlButtons.draw(context);
   }
   isKeyPressed(key) {
     return this.currentKeysDown[key] && this.previousKeysDown[key] !== true;
