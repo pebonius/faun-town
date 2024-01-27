@@ -7,6 +7,7 @@ import {
   cloneArray,
 } from "../utilities/utilities.js";
 import Debug from "../utilities/debug.js";
+import ControlButtons from "./controlButtons.js";
 
 export default class InputManager {
   constructor(canvas) {
@@ -15,6 +16,7 @@ export default class InputManager {
     this.currentKeysDown = [];
     this.previousKeysDown = [];
     this.keys = {};
+    this.controlButtons = new ControlButtons(canvas);
   }
   addKeys() {
     this.keys = {
@@ -216,6 +218,9 @@ export default class InputManager {
   }
   keyUp(e) {
     this.keysDown[e.keyCode] = false;
+  }
+  draw(context) {
+    this.controlButtons.draw(context);
   }
   update() {
     this.previousKeysDown = cloneArray(this.currentKeysDown);
