@@ -24,7 +24,7 @@ export default class WelcomeScreen extends GameState {
     this.addBackgroundImage();
     this.addTitle();
     this.addControlLabel("enter", "start game");
-    this.addControlLabel("a", "about");
+    this.addControlLabel("down", "about");
     this.playMenuMusic();
   }
   playMenuMusic() {
