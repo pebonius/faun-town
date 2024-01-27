@@ -19,7 +19,7 @@ export default class AboutScreen extends GameState {
     this.menuEntryPadding = this.canvas.width * 0.05;
     this.addBackgroundImage();
     this.addAboutText();
-    this.addControlLabel("B", "back to menu");
+    this.addControlLabel("UP", "back to menu");
   }
   addBackgroundImage() {
     this.bgImage = this.content.getAssetByName(
@@ -57,7 +57,7 @@ export default class AboutScreen extends GameState {
     this.kill();
   }
   update(input) {
-    if (input.isKeyPressed(input.keys.B)) {
+    if (input.isKeyPressed(input.keys.UP) || input.isUpClick()) {
       this.goBack();
     }
   }
