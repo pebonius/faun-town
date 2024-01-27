@@ -47,7 +47,7 @@ export default class Dialogue {
   }
   update(input) {
     if (this.hasMessages()) {
-      if (input.isKeyPressed(input.keys.ENTER) || input.isClick()) {
+      if (input.isKeyPressed(input.keys.ENTER) || input.isEnterClick()) {
         this.displayNextMessage();
       }
     }
