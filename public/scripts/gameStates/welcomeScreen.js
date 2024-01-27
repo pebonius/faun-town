@@ -89,10 +89,10 @@ export default class WelcomeScreen extends GameState {
     );
   }
   update(input) {
-    if (input.isKeyPressed(input.keys.ENTER) || input.isClick()) {
+    if (input.isKeyPressed(input.keys.ENTER) || input.isEnterClick()) {
       this.startGame();
     }
-    if (input.isKeyPressed(input.keys.A)) {
+    if (input.isKeyPressed(input.keys.DOWN) || input.isDownClick()) {
       this.openAbout();
     }
   }
