@@ -408,7 +408,11 @@
                   { "text": "SHWAZONNNNNNG!!" },
                   { "text": "(there is a big flash of light)" },
                   { "text": "(i am lazy and didn't program that in)" },
-                  { "text": "(THE END)", "action": { "name": "endGame" } }
+                  { "text": "(THE END)" },
+                  {
+                    "text": "...",
+                    "action": { "name": "endGame", "arguments": [] }
+                  }
                 ]
               ]
             },
