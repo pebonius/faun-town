@@ -6,6 +6,7 @@ import {
   isDefined,
   isNonEmptyString,
 } from "../utilities/utilities.js";
+import { isConditionFulfilled, getSupportedAction } from "./actions.js";
 
 export default class Dialogue {
   constructor(gameScreen) {
@@ -27,28 +28,52 @@ export default class Dialogue {
   playDialogue(messages) {
     checkForArray(messages, "messages");
     this.messages = cloneArray(messages);
+    this.currentMessage = this.messages[0];
+    this.playCurrentMessageAction();
   }
   hasMessages() {
     return (
       Array.isArray(this.messages) &&
       this.messages.length > 0 &&
-      isNonEmptyString(this.messages[0])
+      isNonEmptyString(this.messages[0].text)
     );
   }
   hasNextMessage() {
     return (
       Array.isArray(this.messages) &&
       this.messages.length > 1 &&
-      isNonEmptyString(this.messages[1])
+      isNonEmptyString(this.messages[1].text)
     );
   }
-  displayNextMessage() {
+  cycleMessages() {
+    if (this.hasNextMessage()) {
+      this.currentMessage = this.messages[1];
+      this.playCurrentMessageAction();
+    }
+
     this.messages.splice(0, 1);
+  }
+  playCurrentMessageAction() {
+    const action = this.currentMessage.action;
+    const condition = this.currentMessage.condition;
+    const conditionArgs = this.currentMessage.conditionArgs;
+
+    if (
+      isDefined(action) &&
+      isConditionFulfilled(
+        this.currentMessage.condition,
+        this.currentMessage.conditionArgs,
+        this.gameScreen
+      )
+    ) {
+      const supportedAction = getSupportedAction(action.name, this.gameScreen);
+      supportedAction(...action.arguments);
+    }
   }
   update(input) {
     if (this.hasMessages()) {
       if (input.isKeyPressed(input.keys.ENTER) || input.isEnterClick()) {
-        this.displayNextMessage();
+        this.cycleMessages();
       }
     }
   }
@@ -57,7 +82,7 @@ export default class Dialogue {
       drawRectangle(context, this.position, this.size, this.bgColor);
       drawText(
         context,
-        this.messages[0],
+        this.messages[0].text,
         this.fontSize,
         this.textColor,
         this.textPosition.x,

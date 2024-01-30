@@ -58,8 +58,10 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "i heard a nearby town was decimated by a monster",
-                  "i have to go check it out and help or something"
+                  {
+                    "text": "i heard a nearby town was decimated by a monster"
+                  },
+                  { "text": "i have to go check it out and help or something" }
                 ]
               ]
             }
@@ -82,8 +84,8 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "<<you have found the secret tree event>>",
-                  "<<you feel truly blessed>>"
+                  { "text": "<<you have found the secret tree event>>" },
+                  { "text": "<<you feel truly blessed>>" }
                 ]
               ]
             }
@@ -130,9 +132,11 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "i have arrived in town.",
-                  "it looks very shitty and abandoned.",
-                  "i wonder if any of the townspeople are still here"
+                  { "text": "i have arrived in town." },
+                  { "text": "it looks very shitty and abandoned." },
+                  {
+                    "text": "i wonder if any of the townspeople are still here"
+                  }
                 ]
               ]
             }
@@ -152,12 +156,12 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "is anyone there?",
-                  "<<yes i am the sole survivor>>",
-                  "<<all other townspeople have been killed>>",
-                  "<<so don't bother checking other houses>>",
-                  "<<the monster's lair is at far end of town>>",
-                  "thanks i'll check it out"
+                  { "text": "is anyone there?" },
+                  { "text": "<<yes i am the sole survivor>>" },
+                  { "text": "<<all other townspeople have been killed>>" },
+                  { "text": "<<so don't bother checking other houses>>" },
+                  { "text": "<<the monster's lair is at far end of town>>" },
+                  { "text": "thanks i'll check it out" }
                 ]
               ]
             }
@@ -171,7 +175,13 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["<<knock knock>>", "...", "there is no reply"]]
+              "arguments": [
+                [
+                  { "text": "<<knock knock>>" },
+                  { "text": "..." },
+                  { "text": "there is no reply" }
+                ]
+              ]
             }
           ]
         },
@@ -183,7 +193,13 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["<<knock knock>>", "...", "there is no reply"]]
+              "arguments": [
+                [
+                  { "text": "<<knock knock>>" },
+                  { "text": "..." },
+                  { "text": "there is no reply" }
+                ]
+              ]
             }
           ]
         },
@@ -195,7 +211,13 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["<<knock knock>>", "...", "there is no reply"]]
+              "arguments": [
+                [
+                  { "text": "<<knock knock>>" },
+                  { "text": "..." },
+                  { "text": "there is no reply" }
+                ]
+              ]
             }
           ]
         },
@@ -207,7 +229,13 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["<<knock knock>>", "...", "there is no reply"]]
+              "arguments": [
+                [
+                  { "text": "<<knock knock>>" },
+                  { "text": "..." },
+                  { "text": "there is no reply" }
+                ]
+              ]
             }
           ]
         },
@@ -219,7 +247,13 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["<<knock knock>>", "...", "there is no reply"]]
+              "arguments": [
+                [
+                  { "text": "<<knock knock>>" },
+                  { "text": "..." },
+                  { "text": "there is no reply" }
+                ]
+              ]
             }
           ]
         },
@@ -235,8 +269,8 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "there is some hole here",
-                  "i should check the town for survivors first"
+                  { "text": "there is some hole here" },
+                  { "text": "i should check the town for survivors first" }
                 ]
               ]
             }
@@ -288,7 +322,10 @@
             {
               "name": "playDialogue",
               "arguments": [
-                ["this is the monster's lair?", "something's not right..."]
+                [
+                  { "text": "this is the monster's lair?" },
+                  { "text": "something's not right..." }
+                ]
               ]
             }
           ]
@@ -301,7 +338,7 @@
           "actions": [
             {
               "name": "playDialogue",
-              "arguments": [["i can't run from this any more."]]
+              "arguments": [[{ "text": "i can't run from this any more." }]]
             }
           ]
         },
@@ -319,51 +356,59 @@
               "name": "playDialogue",
               "arguments": [
                 [
-                  "are you... me?",
-                  "<<yes and no>>",
-                  "<<i am the manifestation of your ego>>",
-                  "<<i am you, yet i am nothing like you>>",
-                  "so i was the monster all along?",
-                  "<<true monster is the one who denies the self>>",
-                  "<<you were always weak>>",
-                  "<<didn't confess to your high school crush>>",
-                  "<<didn't go out with that <person> from art school>>",
-                  "<<you don't even have a t*nder profile>>",
-                  "<<all for fear of rejection>>",
-                  "wait...",
-                  "<<i am not bound by it>>",
-                  "<<i abide by my own rule>>",
-                  "<<i date people!>>",
-                  "please... no more",
-                  "<<i go to clubs on saturdays!!!>>",
-                  "no more!",
-                  "<<I LOST MY VERGONITY AT 24!!>>",
-                  "NOOOOOOO!!!",
-                  "...",
-                  "<<it looks like i have inflicted enough damage>>",
-                  "<<now that you know you cannot win>>",
-                  "<<go back and live the rest of your miserable life>>",
-                  "...",
-                  "... no",
-                  "<<what's that?>>",
-                  "it's true, i might be a hopeless vergine",
-                  "but there is more to life than smexing",
-                  "<<huh?>>",
-                  "why should i make a t*nder profile",
-                  "when i have a fur*ffinity profile?",
-                  "<<wait>>",
-                  "you lost your vergonity at 24?",
-                  "<<stop...>>",
-                  "well i was yiffing at 20!",
-                  "<<STOP!>>",
-                  "i have a p*treon with 1k subs!",
-                  "people pay me to draw dragons @%(# each other!!!",
-                  "MY POWER CANNOT BE CONTAINED!!1!1!!!!",
-                  "<<HUAAAAAAAAAAARG!!>>",
-                  "SHWAZONNNNNNG!!",
-                  "(there is a big flash of light)",
-                  "(i am lazy and didn't program that in)",
-                  "(THE END)"
+                  { "text": "are you... me?" },
+                  { "text": "<<yes and no>>" },
+                  { "text": "<<i am the manifestation of your ego>>" },
+                  { "text": "<<i am you, yet i am nothing like you>>" },
+                  { "text": "so i was the monster all along?" },
+                  { "text": "<<true monster is the one who denies the self>>" },
+                  { "text": "<<you were always weak>>" },
+                  { "text": "<<didn't confess to your high school crush>>" },
+                  {
+                    "text": "<<didn't go out with that <person> from art school>>"
+                  },
+                  { "text": "<<you don't even have a t*nder profile>>" },
+                  { "text": "<<all for fear of rejection>>" },
+                  { "text": "wait..." },
+                  { "text": "<<i am not bound by it>>" },
+                  { "text": "<<i abide by my own rule>>" },
+                  { "text": "<<i date people!>>" },
+                  { "text": "please... no more" },
+                  { "text": "<<i go to clubs on saturdays!!!>>" },
+                  { "text": "no more!" },
+                  { "text": "<<I LOST MY VERGONITY AT 24!!>>" },
+                  { "text": "NOOOOOOO!!!" },
+                  { "text": "..." },
+                  {
+                    "text": "<<it looks like i have inflicted enough damage>>"
+                  },
+                  { "text": "<<now that you know you cannot win>>" },
+                  {
+                    "text": "<<go back and live the rest of your miserable life>>"
+                  },
+                  { "text": "..." },
+                  { "text": "... no" },
+                  { "text": "<<what's that?>>" },
+                  { "text": "it's true, i might be a hopeless vergine" },
+                  { "text": "but there is more to life than smexing" },
+                  { "text": "<<huh?>>" },
+                  { "text": "why should i make a t*nder profile" },
+                  { "text": "when i have a fur*ffinity profile?" },
+                  { "text": "<<wait>>" },
+                  { "text": "you lost your vergonity at 24?" },
+                  { "text": "<<stop...>>" },
+                  { "text": "well i was yiffing at 20!" },
+                  { "text": "<<STOP!>>" },
+                  { "text": "i have a p*treon with 1k subs!" },
+                  {
+                    "text": "people pay me to draw dragons @%(# each other!!!"
+                  },
+                  { "text": "MY POWER CANNOT BE CONTAINED!!1!1!!!!" },
+                  { "text": "<<HUAAAAAAAAAAARG!!>>" },
+                  { "text": "SHWAZONNNNNNG!!" },
+                  { "text": "(there is a big flash of light)" },
+                  { "text": "(i am lazy and didn't program that in)" },
+                  { "text": "(THE END)", "action": "endGame" }
                 ]
               ]
             },
